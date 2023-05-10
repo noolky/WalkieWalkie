@@ -13,4 +13,17 @@
     <color name="SunnyDay">#E1F5C4</color>
     <color name="CoolBrown">#B29F94</color>
     <color name="Nimvelo">#314755</color>
+
+
+    <color name="Background">#111419</color>
+    <color name="bar_background">#262C37</color>
+    <color name="text_hint">#939CAD</color>
+    <color name="text_bodycondittion">#393e46</color>
+
+
+    <color name="UnderWeight">#FFC107</color>
+    <color name="Normal">#8BC34A</color>
+    <color name="Over_Weight">#FF5722</color>
+    <color name="Obese">#F60505</color>
+
 </resources>
