@@ -41,11 +41,10 @@
         android:id="@+id/PostingAreaScreenIcon"
         android:layout_width="43dp"
         android:layout_height="44dp"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/posting_area_icon_screen"
         android:src="@drawable/posting_area_icon"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
