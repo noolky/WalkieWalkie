@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/communicationAreaFragment">
+
+    <fragment
+        android:id="@+id/communicationAreaFragment"
+        android:name="com.example.walkiewalkie.CommunicationAreaFragment"
+        android:label="fragment_communication_area"
+        tools:layout="@layout/fragment_communication_area" />
+    <fragment
+        android:id="@+id/bodyConditionFragment"
+        android:name="com.example.walkiewalkie.BodyConditionFragment"
+        android:label="fragment_body_condition"
+        tools:layout="@layout/fragment_body_condition" />
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="com.example.walkiewalkie.AchievementFragment"
+        android:label="fragment_achievement"
+        tools:layout="@layout/fragment_achievement" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.walkiewalkie.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.walkiewalkie.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.walkiewalkie.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" />
+</navigation>
