@@ -14,7 +14,11 @@
         android:id="@+id/bodyConditionFragment"
         android:name="com.example.walkiewalkie.BodyConditionFragment"
         android:label="fragment_body_condition"
-        tools:layout="@layout/fragment_body_condition" />
+        tools:layout="@layout/fragment_body_condition" >
+        <action
+            android:id="@+id/action_bodyConditionFragment_to_BMICalculatorFragment"
+            app:destination="@id/BMICalculatorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/achievementFragment"
         android:name="com.example.walkiewalkie.AchievementFragment"
@@ -35,4 +39,13 @@
         android:name="com.example.walkiewalkie.PostFragment"
         android:label="fragment_post"
         tools:layout="@layout/fragment_post" />
+    <fragment
+        android:id="@+id/BMICalculatorFragment"
+        android:name="com.example.walkiewalkie.BMICalculatorFragment"
+        android:label="fragment_b_m_i_calculator"
+        tools:layout="@layout/fragment_b_m_i_calculator" >
+        <action
+            android:id="@+id/action_BMICalculatorFragment_to_bodyConditionFragment"
+            app:destination="@id/bodyConditionFragment" />
+    </fragment>
 </navigation>
