@@ -7,10 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="grey">#776D6C</color>
-
+    <color name="gray_default_dark">#776D6C</color>
     //Post layout color
     <color name="SunnyDay">#E1F5C4</color>
     <color name="CoolBrown">#B29F94</color>
-    <color name="Nimvelo">#314755</color>
+    <color name="main_text_color">#8A8A8A</color>
+    //cj
+    <color name="colorPrimary">#FF009DB1</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="light_blue">#44CDC5</color>
 </resources>
