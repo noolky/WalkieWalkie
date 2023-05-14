@@ -2,6 +2,7 @@ package com.example.walkiewalkie
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
 class BMICalculatorFragment : Fragment() {
-
+    //this can the DataBMI name when combine aden data
+   private lateinit var dbBMI:DataBMI
     private lateinit var weightText: EditText
     private lateinit var heightText: EditText
     private lateinit var calButton: Button
@@ -27,6 +29,8 @@ class BMICalculatorFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_b_m_i_calculator, container, false)
 
+        //this can the DataBMI name when combine aden data
+        dbBMI= DataBMI(requireContext())
         weightText = view.findViewById(R.id.etWeight)
         heightText = view.findViewById(R.id.etHeight)
         calButton = view.findViewById(R.id.btnCalculate)
@@ -37,12 +41,29 @@ class BMICalculatorFragment : Fragment() {
 
             // validate the input
             if (validateInput(weight, height)) {
-                // calculate the bmi with float (2 decimal)
-                val bmi = weight.toFloat() / ((height.toFloat() / 100) * (height.toFloat() / 100))
-                // get result with 2 decimal
-                val bmi2Digit = String.format("%.2f", bmi).toFloat()
-                displayResult(bmi2Digit)
+                val weightValue=weight.toFloat()
+                val heightValue=height.toFloat()
+                if(weightValue==0f){
+
+                    Toast.makeText(requireContext(), "Weight cannot be 0", Toast.LENGTH_LONG).show()
+
+                }
+                else if(heightValue==0f){
+                    Toast.makeText(requireContext(), "Height cannot be 0", Toast.LENGTH_LONG).show()
+                }
+                else {
+                    // calculate the bmi with float (2 decimal)
+                    val bmi =
+                        weight.toFloat() / ((height.toFloat() / 100) * (height.toFloat() / 100))
+                    // get result with 2 decimal
+                    val bmi2Digit = String.format("%.2f", bmi).toFloat()
+                    displayResult(bmi2Digit)
+
+
+                    dbBMI.saveBMI(weight, height, bmi2Digit)
+                }
             }
+
             closeKeyboard(view)
         }
 
@@ -64,6 +85,7 @@ class BMICalculatorFragment : Fragment() {
             else -> true
         }
     }
+
 
     // display the description for the result and changing the color
     private fun displayResult(bmi: Float) {
@@ -109,6 +131,5 @@ class BMICalculatorFragment : Fragment() {
             requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         close.hideSoftInputFromWindow(view.windowToken, 0)
     }
-
 
 }
