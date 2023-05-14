@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7DDDE"
     android:backgroundTint="#F7DDDE"
     tools:context=".BodyConditionFragment">
 
@@ -17,7 +18,7 @@
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/TvWelcome"
         app:srcCompat="@drawable/bmilogo"
 
-         />
+        />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CVSuggestion"
@@ -63,7 +64,7 @@
 
             <TextView
                 android:id="@+id/SuggestionTittle"
-                android:layout_width="91dp"
+                android:layout_width="108dp"
                 android:layout_height="28dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
@@ -91,7 +92,6 @@
                 android:id="@+id/TvBmiResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
@@ -106,6 +106,7 @@
                 android:layout_marginTop="44dp"
                 android:text="Suggestion 1"
                 android:textColor="@color/text_bodycondittion"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -128,6 +129,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Suggestion 2"
                 android:textColor="@color/text_bodycondittion"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TvSg1Result" />
 
@@ -150,6 +152,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Suggestion 3"
                 android:textColor="@color/text_bodycondittion"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TvSg2Result" />
 
@@ -157,7 +160,7 @@
                 android:id="@+id/TvSg3result"
                 android:layout_width="344dp"
                 android:layout_height="36dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
                 android:textColor="@color/text_bodycondittion"
                 android:textSize="@dimen/bdTextSize"
@@ -170,15 +173,17 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="364dp"
-        android:layout_height="268dp"
+        android:layout_width="374dp"
+        android:layout_height="250dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="55dp"
+        android:background="#FCF5EE"
+        android:backgroundTint="#FCF5EE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CVSuggestion"
         app:layout_constraintVertical_bias="0.098">
@@ -195,6 +200,7 @@
                 android:text="Information"
                 android:textColor="@color/text_bodycondittion"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
@@ -207,6 +213,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:text="What is BMI?"
+                android:textColor="@color/text_bodycondittion"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Information" />
 
@@ -216,6 +224,7 @@
                 android:layout_height="52dp"
                 android:layout_marginStart="16dp"
                 android:text="Body mass index (BMI) is a person’s weight in kilograms divided by the square of height in meters. BMI is an inexpensive and easy screening method for weight category—underweight, healthy weight, overweight, and obesity"
+                android:textColor="@color/text_bodycondittion"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -243,8 +252,8 @@
 
             <ImageView
                 android:id="@+id/imageView20"
-                android:layout_width="373dp"
-                android:layout_height="323dp"
+                android:layout_width="379dp"
+                android:layout_height="276dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView18"
