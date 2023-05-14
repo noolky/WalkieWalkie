@@ -43,31 +43,6 @@ class MainActivity : BaseActivity(), Handler.Callback {
         return R.layout.activity_step
     }
 
-
-/*    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_step)
-
-        movementTotalStepsTv = findViewById(R.id.movement_total_steps_tv)
-        movementRecordsCalenderLL = findViewById(R.id.movement_records_calender_ll)
-        movementTotalStepsTv = findViewById(R.id.movement_total_steps_tv)
-        isSupportTv = findViewById(R.id.is_support_tv)
-        movementTotalKmTv = findViewById(R.id.movement_total_km_tv)
-        movementTotalKmTimeTv = findViewById(R.id.movement_total_km_time_tv)
-        movementTotalStepsTimeTv = findViewById(R.id.movement_total_steps_time_tv)
-
-        // Create and initialize calenderView
-        calenderView = BeforeOrAfterCalendarView(this)
-
-        // Add calenderView to movementRecordsCalenderLL layout
-        movementRecordsCalenderLL?.addView(calenderView)
-
-        // Call initData after initializing the view variables
-        initData()
-    }*/
-
-
-
     override fun initData() {
         movementTotalStepsTv = findViewById(R.id.movement_total_steps_tv)
         movementRecordsCalenderLL = findViewById(R.id.movement_records_calender_ll)
@@ -82,8 +57,6 @@ class MainActivity : BaseActivity(), Handler.Callback {
         movementRecordsCalenderLL?.addView(calenderView)
         requestPermission()
     }
-
-
 
     override fun initListener() {
         calenderView?.setOnBoaCalenderClickListener(object :

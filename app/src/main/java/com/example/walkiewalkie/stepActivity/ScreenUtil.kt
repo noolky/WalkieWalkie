@@ -8,10 +8,11 @@ class ScreenUtil {
 
             val displayMetrics = mContext.resources.displayMetrics
             val widthPixels = displayMetrics.widthPixels
-            val heightPixels = displayMetrics.heightPixels
-            val density = displayMetrics.density
-
             return widthPixels
         }
     }
 }
+
+
+// val heightPixels = displayMetrics.heightPixels
+// val density = displayMetrics.density
