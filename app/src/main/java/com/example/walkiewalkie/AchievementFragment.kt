@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+
 class AchievementFragment : Fragment() {
 
     private val TAG = "AchievementFragment"
@@ -23,7 +24,6 @@ class AchievementFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var databaseHelper: DatabaseHelper
     private val LAST_REWARDED_AD_VIEW_TIMESTAMP_KEY = "last_rewarded_ad_view_timestamp"
-    private val REWARDED_AD_VIEW_COUNT_KEY = "rewarded_ad_view_count"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_achievement, container, false)
@@ -41,7 +41,6 @@ class AchievementFragment : Fragment() {
         // Initialize SharedPreferences
         sharedPreferences = requireContext().getSharedPreferences("com.example.walkiewalkie", Context.MODE_PRIVATE)
         rewardedAdViewCount = sharedPreferences.getInt("rewarded_ad_view_count", 0)
-        rewardedAdViewCount = sharedPreferences.getInt(REWARDED_AD_VIEW_COUNT_KEY, 0)
     }
 
     private fun adsLoadedProgress() {
@@ -71,14 +70,19 @@ class AchievementFragment : Fragment() {
             }
 
             override fun onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
                 Log.d(TAG, "Ad opened")
             }
 
             override fun onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
                 Log.d(TAG, "Ad clicked")
             }
 
             override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
                 Log.d(TAG, "Ad closed")
             }
         }
@@ -107,6 +111,7 @@ class AchievementFragment : Fragment() {
 
     private fun loadRewardedAd() {
         createAndLoadRewardedAd()
+
         // Set the click listener for the rewarded ad button
         view?.findViewById<Button>(R.id.btn_rewarded_ad)?.setOnClickListener {
             if (::rewardedAd.isInitialized) {
@@ -114,11 +119,11 @@ class AchievementFragment : Fragment() {
                 val lastViewTimestamp = sharedPreferences.getLong(LAST_REWARDED_AD_VIEW_TIMESTAMP_KEY, 0L)
                 val elapsedMillis = currentTimeMillis - lastViewTimestamp
 
-                if(elapsedMillis >= 24 * 60 * 60 * 1000){
-                    rewardedAdViewCount=0
+                if (elapsedMillis >= 24 * 60 * 60 * 1000) {
+                    rewardedAdViewCount = 0
                 }
 
-                if (rewardedAdViewCount < MAX_REWARDED_ADS_VIEW_COUNT ) {
+                if (rewardedAdViewCount < MAX_REWARDED_ADS_VIEW_COUNT && elapsedMillis < 24 * 60 * 60 * 1000) {
                     val activityContext = requireActivity()
 
                     rewardedAd.fullScreenContentCallback = object : FullScreenContentCallback() {
@@ -175,6 +180,7 @@ class AchievementFragment : Fragment() {
             }
         }
     }
+
     private fun resetRewardedAdCountAndTimestamp() {
         val currentTimeMillis = System.currentTimeMillis()
         val editor = sharedPreferences.edit()
