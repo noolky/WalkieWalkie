@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -21,28 +21,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <TextView
         android:id="@+id/postTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:text="@string/posting_area_name"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857" />
+        app:layout_constraintBottom_toBottomOf="@+id/PostingAreaScreenIcon"
+        app:layout_constraintStart_toEndOf="@+id/PostingAreaScreenIcon"
+        app:layout_constraintTop_toTopOf="@+id/PostingAreaScreenIcon"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/PostingAreaScreenIcon"
-        android:layout_width="43dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="@string/posting_area_icon_screen"
         android:src="@drawable/posting_area_icon"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +50,7 @@
     <EditText
         android:id="@+id/userUploadPost"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:autofillHints=""
         android:background="@android:color/white"
         android:ems="10"
@@ -63,10 +62,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <Button
         android:id="@+id/postButton"
@@ -76,24 +75,24 @@
         android:gravity="center"
         android:text="@string/post_button_word"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/userUploadPost"
+        app:layout_constraintStart_toStartOf="@+id/userUploadPost"
         app:layout_constraintTop_toBottomOf="@+id/userUploadPost"
-        app:layout_constraintVertical_bias="0.0"
         tools:ignore="VisualLintButtonSize" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="83dp"
-        android:layout_height="87dp"
+        android:layout_width="64dp"
+        android:layout_height="66dp"
         android:background="@drawable/text_box_container"
         android:contentDescription="@string/ImagePosting"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.534"
         app:srcCompat="@drawable/profile_icon"
         tools:src="@tools:sample/avatars" />
 
@@ -102,33 +101,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
+        android:layout_marginEnd="195dp"
         android:text="@string/this_post_will_share_to_everyone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/userUploadPost"
         app:layout_constraintHorizontal_bias="0.075"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/userUploadPost"
         app:layout_constraintTop_toBottomOf="@+id/userUploadPost"
-        app:layout_constraintVertical_bias="0.021" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintVertical_bias="0.047" />
 
     <TextView
         android:id="@+id/userNamePost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="20dp"
         android:text="@string/UserName"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.333" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
