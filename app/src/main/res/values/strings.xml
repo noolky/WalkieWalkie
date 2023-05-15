@@ -17,4 +17,6 @@
     <string name="ImagePosting">ImagePosting</string>
     <string name="PostOnScreen">PostOnScreen</string>
     <string name="FloatingButtonValue">CommunicationAreaButton</string>
+    <string name="register">register</string>
+    <string name="login">login</string>
 </resources>

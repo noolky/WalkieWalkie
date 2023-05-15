@@ -9,11 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_step)
         setContentView(getLayoutId())
+
     }
 
     override fun setContentView(@LayoutRes layoutResID: Int) {
@@ -39,4 +38,6 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun getLayoutId(): Int
     abstract fun initData()
     abstract fun initListener()
+
+
 }
