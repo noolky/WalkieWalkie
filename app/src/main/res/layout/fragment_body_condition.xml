@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F7DDDE"
     android:backgroundTint="#F7DDDE"
+    android:textAlignment="center"
     tools:context=".BodyConditionFragment">
 
 
@@ -13,7 +14,7 @@
         android:id="@+id/TvWelcome"
         android:layout_width="263dp"
         android:layout_height="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Welcome To Body Condition"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -27,7 +28,6 @@
         android:layout_width="88dp"
         android:layout_height="93dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="@color/bar_background"
         android:backgroundTint="#CEDDEF"
@@ -43,8 +43,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CVSuggestion"
-        android:layout_width="379dp"
-        android:layout_height="265dp"
+        android:layout_width="380dp"
+        android:layout_height="227dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
@@ -83,10 +83,10 @@
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.029" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/TvBmiResult"
@@ -94,7 +94,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TvBmiTittle" />
 
@@ -102,8 +101,8 @@
                 android:id="@+id/TvSg1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="50dp"
                 android:text="Suggestion 1"
                 android:textColor="@color/text_bodycondittion"
                 android:textStyle="bold"
@@ -112,12 +111,11 @@
 
             <TextView
                 android:id="@+id/TvSg1Result"
-                android:layout_width="345dp"
-                android:layout_height="42dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="350dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
                 android:textColor="@color/text_bodycondittion"
-                android:textSize="12sp"
+                android:textSize="@dimen/bdTextSize"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TvSg1" />
 
@@ -125,8 +123,8 @@
                 android:id="@+id/TvSg2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="5dp"
                 android:text="Suggestion 2"
                 android:textColor="@color/text_bodycondittion"
                 android:textStyle="bold"
@@ -135,10 +133,9 @@
 
             <TextView
                 android:id="@+id/TvSg2Result"
-                android:layout_width="346dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="350dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
                 android:textColor="@color/text_bodycondittion"
                 android:textSize="@dimen/bdTextSize"
                 app:layout_constraintStart_toStartOf="parent"
@@ -148,8 +145,8 @@
                 android:id="@+id/TvSg3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="5dp"
                 android:text="Suggestion 3"
                 android:textColor="@color/text_bodycondittion"
                 android:textStyle="bold"
@@ -158,10 +155,9 @@
 
             <TextView
                 android:id="@+id/TvSg3result"
-                android:layout_width="344dp"
-                android:layout_height="36dp"
+                android:layout_width="350dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
                 android:textColor="@color/text_bodycondittion"
                 android:textSize="@dimen/bdTextSize"
                 app:layout_constraintStart_toStartOf="parent"
@@ -173,20 +169,17 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="374dp"
-        android:layout_height="250dp"
+        android:layout_width="380dp"
+        android:layout_height="200dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="55dp"
         android:background="#FCF5EE"
         android:backgroundTint="#FCF5EE"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CVSuggestion"
-        app:layout_constraintVertical_bias="0.098">
+        app:layout_constraintTop_toBottomOf="@+id/CVSuggestion">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -231,33 +224,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/QBMI" />
 
             <ImageView
-                android:id="@+id/imageView17"
-                android:layout_width="394dp"
-                android:layout_height="163dp"
-                android:layout_marginTop="10dp"
+                android:id="@+id/BMITable"
+                android:layout_width="362dp"
+                android:layout_height="218dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/bmitable"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/AnsBMI"
-                app:srcCompat="@drawable/bmitable" />
+                app:layout_constraintTop_toBottomOf="@+id/AnsBMI" />
 
             <ImageView
-                android:id="@+id/imageView18"
-                android:layout_width="263dp"
-                android:layout_height="86dp"
-                android:layout_marginTop="10dp"
+                android:id="@+id/FoodTable"
+                android:layout_width="405dp"
+                android:layout_height="301dp"
+                android:src="@drawable/food_pyramid1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView17"
-                app:srcCompat="@drawable/caculationbmi" />
-
-            <ImageView
-                android:id="@+id/imageView20"
-                android:layout_width="379dp"
-                android:layout_height="276dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView18"
-                app:srcCompat="@drawable/food_pyramid1" />
+                app:layout_constraintTop_toBottomOf="@+id/BMITable" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
