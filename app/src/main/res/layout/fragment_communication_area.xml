@@ -1,41 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".CommunicationAreaFragment"
     android:paddingBottom="10dp">
 
-    <TextView
-        android:id="@+id/textView3"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/CommunicationAreaAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme"
+        >
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:title="Communication Area"
+            android:id="@+id/collapsing_toolbarCommunicationArea">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/communication_area_icon"
+                app:layout_collapseMode="parallax"
+                android:contentDescription="@string/communication_icon_screen" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarCommunicationArea"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"/>
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_viewCommunicationArea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/EnterPostButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/UserName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:layout_marginEnd="30dp"
+        android:background="@android:color/darker_gray"
+        android:baselineAlignBottom="false"
+        android:clickable="true"
+        android:contentDescription="@string/FloatingButtonValue"
+        android:focusable="true"
+        android:src="@drawable/edit_button_icon"
+        app:fabSize="normal"
+        app:layout_anchor="@id/CommunicationAreaAppBar"
+        app:layout_anchorGravity="end|bottom"
+        tools:ignore="ImageContrastCheck" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="60dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/posting_area_icon_screen"
-        android:src="@drawable/profile_icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/PostOnScreen"
-        android:layout_width="259dp"
-        android:layout_height="88dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
 
-        android:text="@string/PostOnScreen"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

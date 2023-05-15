@@ -23,13 +23,13 @@
         tools:ignore="GoogleAppIndexingWarning"
         >
         <activity
-            android:name=".MainActivity"
+            android:name=".stepActivity.MainActivity"
             android:exported="false" />
 
 
 
         <activity
-            android:name=".stepActivity.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
