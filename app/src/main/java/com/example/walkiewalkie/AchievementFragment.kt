@@ -23,6 +23,7 @@ class AchievementFragment : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var databaseHelper: DatabaseHelper
     private val LAST_REWARDED_AD_VIEW_TIMESTAMP_KEY = "last_rewarded_ad_view_timestamp"
+    private val REWARDED_AD_VIEW_COUNT_KEY = "rewarded_ad_view_count"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_achievement, container, false)
@@ -40,6 +41,7 @@ class AchievementFragment : Fragment() {
         // Initialize SharedPreferences
         sharedPreferences = requireContext().getSharedPreferences("com.example.walkiewalkie", Context.MODE_PRIVATE)
         rewardedAdViewCount = sharedPreferences.getInt("rewarded_ad_view_count", 0)
+        rewardedAdViewCount = sharedPreferences.getInt(REWARDED_AD_VIEW_COUNT_KEY, 0)
     }
 
     private fun adsLoadedProgress() {
@@ -69,19 +71,14 @@ class AchievementFragment : Fragment() {
             }
 
             override fun onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
                 Log.d(TAG, "Ad opened")
             }
 
             override fun onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
                 Log.d(TAG, "Ad clicked")
             }
 
             override fun onAdClosed() {
-                // Code to be executed when the user is about to return
-                // to the app after tapping on an ad.
                 Log.d(TAG, "Ad closed")
             }
         }
