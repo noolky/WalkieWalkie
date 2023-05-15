@@ -6,14 +6,14 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class DBHelperPost(context: Context):SQLiteOpenHelper(context,"Userdata",null,1) {
+class DBHelperPost(context: Context):SQLiteOpenHelper(context,"Postdetaildata",null,1) {
 
     override fun onCreate(p0: SQLiteDatabase?) {
-        p0?.execSQL("create table Userdata (postID TEXT primary key,userName TEXT,postData TEXT)")
+        p0?.execSQL("create table Postdetaildata (postID TEXT primary key,userName TEXT,postData TEXT)")
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-        p0?.execSQL("drop table if exists Userdata")
+        p0?.execSQL("drop table if exists Postdetaildata")
     }
 
     fun saveuserdata(postID:String,userName:String,postData:String): Boolean {
@@ -28,7 +28,7 @@ class DBHelperPost(context: Context):SQLiteOpenHelper(context,"Userdata",null,1)
         cv.put("postID",postID)
         cv.put("userName",userName)
         cv.put("postData",postData)
-        val result = p0.insert("Userdata",null,cv)
+        val result = p0.insert("Postdetaildata",null,cv)
         if (result==-1L){
             return false
         }
@@ -37,13 +37,13 @@ class DBHelperPost(context: Context):SQLiteOpenHelper(context,"Userdata",null,1)
 
     fun gettext(): Cursor? {
         val p0 = this.writableDatabase
-        val cursor = p0.rawQuery("select * from Userdata",null)
+        val cursor = p0.rawQuery("select * from Postdetaildata",null)
         return cursor
     }
 
     fun getNewestPostID(): Int {
         val db = readableDatabase
-        val query = "SELECT MAX(postID) FROM Userdata"
+        val query = "SELECT MAX(postID) FROM Postdetaildata"
         val cursor = db.rawQuery(query, null)
 
         val newestPostID = if (cursor.moveToFirst()) {
@@ -60,7 +60,7 @@ class DBHelperPost(context: Context):SQLiteOpenHelper(context,"Userdata",null,1)
 
     fun clearTable() {
         val db = writableDatabase
-        db.execSQL("DELETE FROM Userdata")
+        db.execSQL("DELETE FROM Postdetaildata")
         db.close()
     }
 }
