@@ -50,23 +50,23 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
         return true
     }
 
-//    fun getUserData(userId: Long): UserData? {
-//        val db = this.readableDatabase
-//        val projection = arrayOf("name", "phone", "email", "password")
-//        val selection = "id = ?"
-//        val selectionArgs = arrayOf(userId.toString())
-//        val cursor = db.query("Userdata", projection, selection, selectionArgs, null, null, null)
-//        var userData: UserData? = null
-//        if (cursor.moveToFirst()) {
-//            val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
-//            val phone = cursor.getString(cursor.getColumnIndexOrThrow("phone"))
-//            val email = cursor.getString(cursor.getColumnIndexOrThrow("email"))
-//            val password = cursor.getString(cursor.getColumnIndexOrThrow("password"))
-//            userData = UserData(name, phone, email, password)
-//        }
-//        cursor.close()
-//        db.close()
-//        return userData
-//    }
-//    data class UserData(val name: String, val phone: String, val email: String, val password: String)
+    fun getUserData(userId: Int): UserData? {
+        val db = this.readableDatabase
+        val projection = arrayOf("name", "phone", "email", "password")
+        val selection = "id = ?"
+        val selectionArgs = arrayOf(userId.toString())
+        val cursor = db.query("Userdata", projection, selection, selectionArgs, null, null, null)
+        var userData: UserData? = null
+        if (cursor.moveToFirst()) {
+            val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+            val phone = cursor.getString(cursor.getColumnIndexOrThrow("phone"))
+            val email = cursor.getString(cursor.getColumnIndexOrThrow("email"))
+            val password = cursor.getString(cursor.getColumnIndexOrThrow("password"))
+            userData = UserData(name, phone, email, password)
+        }
+        cursor.close()
+        db.close()
+        return userData
+    }
+    data class UserData(val name: String, val phone: String, val email: String, val password: String)
 }
