@@ -40,7 +40,7 @@ class BodyConditionFragment : Fragment() {
         BMIText =view.findViewById(R.id.TvBmiResult)
 
         val LastestBMI=dataBaseBMI.getLastestBMI()
-        val BMIResult2Digit =LastestBMI.toFloat()
+        val BMIResult2Digit =LastestBMI
 
         val resultSuggestion1 = view?.findViewById<TextView>(R.id.TvSg1Result)
         val resultSuggestion2 = view?.findViewById<TextView>(R.id.TvSg2Result)
@@ -52,8 +52,9 @@ class BodyConditionFragment : Fragment() {
         var Sg3=""
         var color = 0
         var bodyIndex=""
+        var textBDdec=""
 
-        if(LastestBMI==null){
+            if(LastestBMI.toString().isEmpty()){
             // Handle the case where no latest BMI value is available
             BMIText.text = "No data available"
             // Set default values for suggestions or handle them accordingly
@@ -64,12 +65,14 @@ class BodyConditionFragment : Fragment() {
 
         }
         else{
+
             when {
                 BMIResult2Digit in 0.01.. 18.5 -> {
                     Sg1="Increase caloric intake with nutrient-dense foods."
                     Sg2="Incorporate strength training to build muscle mass."
                     Sg3="Seek guidance from a healthcare professional or dietitian for personalized advice."
                     color = R.color.UnderWeight
+                    textBDdec=" You BMI Status is "
                     bodyIndex="UnderWeight"
                 }
 
@@ -86,6 +89,7 @@ class BodyConditionFragment : Fragment() {
                     Sg2="Increase physical activity levels to burn calories."
                     Sg3="Incorporate more fruits, vegetables, and whole grains into your meals."
                     color = R.color.Over_Weight
+                    textBDdec=" You BMI Status is "
                     bodyIndex="Over Weight"
                 }
 
@@ -94,27 +98,29 @@ class BodyConditionFragment : Fragment() {
                     Sg2="Follow a balanced and calorie-controlled diet plan"
                     Sg3="Engage in regular physical activity and consider working with a qualified fitness professional."
                     color = R.color.Obese
+                    textBDdec=" You BMI Status is "
                     bodyIndex="Obesity"
                 }
 
                 else ->{
-                    BMIText.text = "No data available"
                     // Set default values for suggestions or handle them accordingly
-                    resultSuggestion1?.text = "Enter your Height and Weight to calculate BMI"
-                    resultSuggestion2?.text = ""
-                    resultSuggestion3?.text = ""
-                    color=R.color.white
+                    Sg1 = "Enter your Height and Weight to calculate BMI"
+                    color=R.color.black
+                    textBDdec=""
+                    bodyIndex=" No data available "
                 }
+
             }
             BMIText.setTextColor(ContextCompat.getColor(requireContext(), color))
+            resultSuggestion1?.text=Sg1
+            resultSuggestion2?.text=Sg2
+            resultSuggestion3?.text=Sg3
+
+            BMIText.text=BMIResult2Digit.toString()+textBDdec+bodyIndex
+            Log.i("BMI Result ","$BMIResult2Digit")
+            Log.i("BMI Result ","${resultSuggestion1.toString()}")
+
         }
-
-        resultSuggestion1?.text=Sg1
-        resultSuggestion2?.text=Sg2
-        resultSuggestion3?.text=Sg3
-
-        BMIText.text=BMIResult2Digit.toString()+" You BMI Status is"+bodyIndex.toString()
-        Log.i("BMI Result","$LastestBMI")
 
         return view
     }
