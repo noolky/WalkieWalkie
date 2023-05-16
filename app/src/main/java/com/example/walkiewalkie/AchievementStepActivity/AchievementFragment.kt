@@ -51,8 +51,6 @@ class AchievementFragment : Fragment() {
         sharedPreferences = requireContext().getSharedPreferences("com.example.walkiewalkie", Context.MODE_PRIVATE)
         rewardedAdViewCount = sharedPreferences.getInt("rewarded_ad_view_count", 0)
 
-
-
         // add value
         val databaseHelper = DatabaseHelper(requireContext())
         // Add a value to the total coins in the database
