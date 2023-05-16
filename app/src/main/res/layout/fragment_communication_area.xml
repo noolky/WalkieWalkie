@@ -65,6 +65,16 @@
         app:layout_anchorGravity="end|bottom"
         tools:ignore="ImageContrastCheck" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabScrollToTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/ArrowButton"
+        android:src="@drawable/ic_arrow_upward"
+        app:layout_anchor="@id/recycler_viewCommunicationArea"
+        app:layout_anchorGravity="bottom|end" />
 
 
 

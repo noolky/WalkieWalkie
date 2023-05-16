@@ -19,4 +19,5 @@
     <string name="FloatingButtonValue">CommunicationAreaButton</string>
     <string name="register">register</string>
     <string name="login">login</string>
+    <string name="ArrowButton">UpToTop</string>
 </resources>

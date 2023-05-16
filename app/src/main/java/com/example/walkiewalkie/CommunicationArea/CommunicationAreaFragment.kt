@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.walkiewalkie.DataBase.DBHelperPost
 import com.example.walkiewalkie.R
 import com.example.walkiewalkie.databinding.FragmentCommunicationAreaBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area) {
@@ -37,6 +38,10 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.fabScrollToTop.setOnClickListener{
+            recyclerView.smoothScrollToPosition(0)
+        }
+
         binding.EnterPostButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.postFragment)
         }
@@ -59,6 +64,8 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
         }
         recyclerView.adapter = MyAdapterPost(newArry)
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
