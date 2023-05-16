@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,7 +9,6 @@
     android:layout_marginRight="5dp"
     android:paddingBottom="20dp"
     tools:context=".CommunicationArea.CommunicationAreaFragment">
-
 
     <TextView
         android:id="@+id/userNameOnPost"
@@ -63,33 +61,26 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.2" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/modify_button"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/scrollableContainer"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/scrollableContainer"
-        app:layout_constraintTop_toBottomOf="@+id/scrollableContainer" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollableContainer">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/likebutton"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/EditButtonPost"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/LikedButton"
+            android:src="@drawable/modify_button"
+            app:layout_constraintEnd_toEndOf="@+id/scrollableContainer"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/scrollableContainer"
+            app:layout_constraintTop_toBottomOf="@+id/scrollableContainer" />
 
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

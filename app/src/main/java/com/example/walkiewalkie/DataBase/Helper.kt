@@ -57,24 +57,7 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
         return true
     }
 
-    fun getUserData(userId: Int): UserData? {
-        val db = this.readableDatabase
-        val projection = arrayOf("name", "phone", "email", "password")
-        val selection = "id = ?"
-        val selectionArgs = arrayOf(userId.toString())
-        val cursor = db.query("Userdata", projection, selection, selectionArgs, null, null, null)
-        var userData: UserData? = null
-        if (cursor.moveToFirst()) {
-            val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
-            val phone = cursor.getString(cursor.getColumnIndexOrThrow("phone"))
-            val email = cursor.getString(cursor.getColumnIndexOrThrow("email"))
-            val password = cursor.getString(cursor.getColumnIndexOrThrow("password"))
-            userData = UserData(name, phone, email, password)
-        }
-        cursor.close()
-        db.close()
-        return userData
-    }
+
 
     fun saveBMI(weight: String, height: String, bmi: Float) {
         val db = writableDatabase
@@ -115,10 +98,12 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
         return latestBMI
     }
 
-    fun updateBMI(username: String, newBMI: Float) {
+    fun updateBMI(username: String,weight: String, height: String, newBMI: Float) {
         val db = writableDatabase
 
         val values = ContentValues()
+        values.put("weight", weight)
+        values.put("height", height)
         values.put("bmi", newBMI)
 
         val whereClause = "username = ?"
@@ -196,7 +181,34 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
 
         return newestPostID
     }
-    data class UserData(val name: String, val phone: String, val email: String, val password: String)
+
+    fun updatePostData(postID: String, newPostData: String): Boolean {
+        val db = writableDatabase
+
+        val values = ContentValues()
+        values.put("postData", newPostData)
+
+        val whereClause = "postID = ?"
+        val whereArgs = arrayOf(postID)
+
+        val rowsAffected = db.update("Postdetaildata", values, whereClause, whereArgs)
+        db.close()
+
+        return rowsAffected > 0
+    }
+
+    fun deletePostData(postID: String): Boolean {
+        val db = writableDatabase
+
+        val whereClause = "postID = ?"
+        val whereArgs = arrayOf(postID)
+
+        val rowsAffected = db.delete("Postdetaildata", whereClause, whereArgs)
+        db.close()
+
+        return rowsAffected > 0
+    }
+
     data class UserDetails(
         val username: String,
         val phone: String,

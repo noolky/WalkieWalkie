@@ -69,7 +69,7 @@ class BMICalculatorFragment : Fragment() {
                     saveBMIResult = bmi2Digit
 
                     ChangeButton.setOnClickListener{
-                        dbBMI.updateBMI(username.toString(), saveBMIResult)
+                        dbBMI.updateBMI(username.toString(), weight,height,saveBMIResult)
                         Toast.makeText(requireContext(), "BMI successfully set up ", Toast.LENGTH_LONG).show()
 
                     }
