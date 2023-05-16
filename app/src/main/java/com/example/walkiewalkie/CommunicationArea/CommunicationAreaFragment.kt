@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.walkiewalkie.DataBase.DBHelperPost
+import com.example.walkiewalkie.DataBase.Helper
 import com.example.walkiewalkie.R
 import com.example.walkiewalkie.databinding.FragmentCommunicationAreaBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -23,7 +23,7 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
 
     //
     private lateinit var recyclerView: RecyclerView
-    lateinit var dbh: DBHelperPost
+    lateinit var dbh: Helper
     private lateinit var newArry: ArrayList<DatalistPost>
 
     override fun onCreateView(
@@ -46,7 +46,7 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
             view.findNavController().navigate(R.id.postFragment)
         }
 
-        dbh = DBHelperPost(requireContext())
+        dbh = Helper(requireContext())
         recyclerView = binding.recyclerViewCommunicationArea
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
