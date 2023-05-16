@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/postFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/communicationAreaFragment"
-        android:name="com.example.walkiewalkie.CommunicationAreaFragment"
+        android:name="com.example.walkiewalkie.CommunicationArea.CommunicationAreaFragment"
         android:label="fragment_communication_area"
         tools:layout="@layout/fragment_communication_area" />
     <fragment
         android:id="@+id/bodyConditionFragment"
-        android:name="com.example.walkiewalkie.BodyConditionFragment"
+        android:name="com.example.walkiewalkie.BodyCondition.BodyConditionFragment"
         android:label="fragment_body_condition"
         tools:layout="@layout/fragment_body_condition" >
         <action
@@ -21,12 +21,12 @@
     </fragment>
     <fragment
         android:id="@+id/achievementFragment"
-        android:name="com.example.walkiewalkie.AchievementFragment"
+        android:name="com.example.walkiewalkie.AchievementStepActivity.AchievementFragment"
         android:label="fragment_achievement"
         tools:layout="@layout/fragment_achievement" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.walkiewalkie.ProfileFragment"
+        android:name="com.example.walkiewalkie.loginRegister.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
@@ -36,12 +36,12 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/postFragment"
-        android:name="com.example.walkiewalkie.PostFragment"
+        android:name="com.example.walkiewalkie.CommunicationArea.PostFragment"
         android:label="fragment_post"
         tools:layout="@layout/fragment_post" />
     <fragment
         android:id="@+id/BMICalculatorFragment"
-        android:name="com.example.walkiewalkie.BMICalculatorFragment"
+        android:name="com.example.walkiewalkie.BodyCondition.BMICalculatorFragment"
         android:label="fragment_b_m_i_calculator"
         tools:layout="@layout/fragment_b_m_i_calculator" >
         <action

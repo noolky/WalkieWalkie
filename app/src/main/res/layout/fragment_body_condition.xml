@@ -7,7 +7,7 @@
     android:background="#F7DDDE"
     android:backgroundTint="#F7DDDE"
     android:textAlignment="center"
-    tools:context=".BodyConditionFragment">
+    tools:context=".BodyCondition.BodyConditionFragment">
 
 
     <TextView
