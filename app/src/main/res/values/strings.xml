@@ -20,4 +20,12 @@
     <string name="register">register</string>
     <string name="login">login</string>
     <string name="ArrowButton">UpToTop</string>
+    <string name="EditButton">EditButton</string>
+    <string name="LikedButton">LikedButton</string>
+    <string name="DeleteButton">DeletePost</string>
+    <string name="EditTextValue">EditTextValue</string>
+    <string name="EditText">Edit Text</string>
+    <string name="Done">Done</string>
+    <string name="Back">Back</string>
+    <string name="EditPostTitle">Edit Text</string>
 </resources>

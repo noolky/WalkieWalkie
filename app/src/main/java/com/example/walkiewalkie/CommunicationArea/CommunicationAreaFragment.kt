@@ -1,5 +1,6 @@
 package com.example.walkiewalkie.CommunicationArea
 
+import android.content.Context
 import android.database.Cursor
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.walkiewalkie.DataBase.Helper
 import com.example.walkiewalkie.R
 import com.example.walkiewalkie.databinding.FragmentCommunicationAreaBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area) {
@@ -20,6 +20,7 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
     //binding code
     private var _binding: FragmentCommunicationAreaBinding? = null
     private val binding get() = _binding!!
+
 
     //
     private lateinit var recyclerView: RecyclerView
@@ -38,6 +39,9 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val sharedPreferences = context?.getSharedPreferences("your_preference_name", Context.MODE_PRIVATE)
+        val username = sharedPreferences?.getString("username", null)
+
         binding.fabScrollToTop.setOnClickListener{
             recyclerView.smoothScrollToPosition(0)
         }
@@ -50,10 +54,10 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
         recyclerView = binding.recyclerViewCommunicationArea
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
-        displaypost()
+        displaypost(username.toString())
     }
 
-    private fun displaypost() {
+    private fun displaypost(currentUserUsername: String?) {
         var newcursor: Cursor? = dbh?.gettext()
         newArry = ArrayList<DatalistPost>()
         while (newcursor!!.moveToNext()) {
@@ -62,7 +66,7 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
             val upost = newcursor.getString(2)
             newArry.add(DatalistPost(upostID, uname, upost))
         }
-        recyclerView.adapter = MyAdapterPost(newArry)
+        recyclerView.adapter = MyAdapterPost(newArry, currentUserUsername ?: "")
     }
 
 

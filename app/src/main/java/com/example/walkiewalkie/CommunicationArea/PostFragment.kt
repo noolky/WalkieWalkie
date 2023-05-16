@@ -34,6 +34,7 @@ class PostFragment : Fragment(R.layout.fragment_post) {
         super.onViewCreated(view, savedInstanceState)
         val sharedPreferences = context?.getSharedPreferences("your_preference_name", Context.MODE_PRIVATE)
         val username = sharedPreferences?.getString("username", null)
+        binding.userNamePost.setText(username.toString())
         binding.postButton.setOnClickListener {
 
                 val postData = binding.userUploadPost.text.toString()

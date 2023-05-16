@@ -9,7 +9,17 @@
         android:id="@+id/communicationAreaFragment"
         android:name="com.example.walkiewalkie.CommunicationArea.CommunicationAreaFragment"
         android:label="fragment_communication_area"
-        tools:layout="@layout/fragment_communication_area" />
+        tools:layout="@layout/fragment_communication_area" >
+        <action
+            android:id="@+id/action_communicationAreaFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+        <argument
+            android:name="postID"
+            app:argType="string" />
+        <argument
+            android:name="postData"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/bodyConditionFragment"
         android:name="com.example.walkiewalkie.BodyCondition.BodyConditionFragment"
@@ -48,4 +58,10 @@
             android:id="@+id/action_BMICalculatorFragment_to_bodyConditionFragment"
             app:destination="@id/bodyConditionFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.walkiewalkie.CommunicationArea.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" />
 </navigation>
