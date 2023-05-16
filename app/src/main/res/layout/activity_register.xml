@@ -132,7 +132,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/btns"
         android:text="signup"
-        android:textColor="@color/black"
+        android:textColor="@android:color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

@@ -14,11 +14,12 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
     private val appContext: Context = context.applicationContext
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("create table Userdata (username TEXT primary key, phone TEXT, email TEXT, password TEXT, weight TEXT, height TEXT, bmi REAL)")
-
+        db?.execSQL("create table Postdetaildata (postID TEXT primary key,userName TEXT,postData TEXT)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("drop table if exists Userdata")
+        db?.execSQL("drop table if exists Postdetaildata")
         onCreate(db)
     }
 
@@ -151,14 +152,60 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
 
         return userDetails
     }
+
+    //postDataBase
+
+    fun saveuserdata(postID:String,userName:String,postData:String): Boolean {
+
+        if (postData ==null){
+            return false
+        }
+
+        val p0 = this.writableDatabase
+        val cv = ContentValues()
+
+        cv.put("postID",postID)
+        cv.put("userName",userName)
+        cv.put("postData",postData)
+        val result = p0.insert("Postdetaildata",null,cv)
+        if (result==-1L){
+            return false
+        }
+        return true
+    }
+
+    fun gettext(): Cursor? {
+        val p0 = this.writableDatabase
+        val cursor = p0.rawQuery("select * from Postdetaildata",null)
+        return cursor
+    }
+
+    fun getNewestPostID(): Int {
+        val db = readableDatabase
+        val query = "SELECT MAX(postID) FROM Postdetaildata"
+        val cursor = db.rawQuery(query, null)
+
+        val newestPostID = if (cursor.moveToFirst()) {
+            cursor.getInt(0)
+        } else {
+            0
+        }
+
+        cursor.close()
+        db.close()
+
+        return newestPostID
+    }
     data class UserData(val name: String, val phone: String, val email: String, val password: String)
     data class UserDetails(
         val username: String,
         val phone: String,
         val email: String,
         val password: String,
-        val weight: String,
-        val height: String,
-        val bmi: Float
+        val weight: String?,
+        val height: String?,
+        val bmi: Float?
     )
+
+
 }
