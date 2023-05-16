@@ -53,13 +53,13 @@ class AchievementFragment : Fragment() {
 
 
 
-      /*  // add value
+        // add value
         val databaseHelper = DatabaseHelper(requireContext())
         // Add a value to the total coins in the database
-        val coinsToAdd = 10001
+        val coinsToAdd = 3000
         databaseHelper.updateTotalCoins(databaseHelper.getTotalCoins() + coinsToAdd)
         val updatedTotalCoins = databaseHelper.getTotalCoins()
-        view.findViewById<TextView>(R.id.tv_total_coins).text = "Total coins: $updatedTotalCoins"*/
+        view.findViewById<TextView>(R.id.tv_total_coins).text = "Total coins: $updatedTotalCoins"
 
         view?.findViewById<Button>(R.id.voucher1ImageButton)?.setOnClickListener {
             if (totalCoins >= 1000) {
@@ -78,12 +78,11 @@ class AchievementFragment : Fragment() {
                     voucher1Image1.visibility = View.GONE
                     voucher1Image2?.visibility = View.VISIBLE
                     Toast.makeText(requireContext(), "Voucher1 Redeemed", Toast.LENGTH_SHORT).show()
-
                     voucher1ImageButton?.visibility = View.GONE
                     voucher1ImageButtonR?.visibility = View.VISIBLE
-                } else {
-                    Toast.makeText(requireContext(), "Not enough coins.", Toast.LENGTH_SHORT).show()
                 }
+            }else {
+                Toast.makeText(requireContext(), "Not enough coins.", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -104,13 +103,9 @@ class AchievementFragment : Fragment() {
                     Toast.makeText(requireContext(), "Voucher2 Redeemed", Toast.LENGTH_SHORT).show()
                     voucher2ImageButton?.visibility = View.GONE
                     voucher2ImageButtonR?.visibility = View.VISIBLE
-
-                    //reset
-                    //voucher2Image1?.visibility = View.VISIBLE
-                    //voucher2Image2?.visibility = View.GONE
-                } else {
-                    Toast.makeText(requireContext(), "Not enough coins.", Toast.LENGTH_SHORT).show()
                 }
+            } else {
+                Toast.makeText(requireContext(), "Not enough coins.", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -132,13 +127,9 @@ class AchievementFragment : Fragment() {
                     Toast.makeText(requireContext(), "Voucher3 Redeemed", Toast.LENGTH_SHORT).show()
                     voucher3ImageButton?.visibility = View.GONE
                     voucher3ImageButtonR?.visibility = View.VISIBLE
-                    //reset
-                    //voucher3Image1?.visibility = View.VISIBLE
-                    //voucher3Image2?.visibility = View.GONE
-
-                } else {
-                    Toast.makeText(requireContext(), "Not enough coins.", Toast.LENGTH_SHORT).show()
                 }
+            } else {
+                Toast.makeText(requireContext(), "Not enough coins.", Toast.LENGTH_SHORT).show()
             }
         }
 

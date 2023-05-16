@@ -147,7 +147,7 @@ Each voucher required 1000 coins.
                             android:layout_height="wrap_content"
                             android:contentDescription="Voucher 2"
                             android:src="@drawable/voucher_2"
-                            android:text="Redeem"
+                            android:text="Reset"
                             android:visibility="gone" />
 
                         <ImageView
@@ -187,8 +187,8 @@ Each voucher required 1000 coins.
                             android:layout_height="wrap_content"
                             android:contentDescription="Voucher 3"
                             android:src="@drawable/voucher_3"
-                            android:text="Redeem"
-                            android:visibility="gone"/>
+                            android:text="Reset"
+                            android:visibility="gone" />
 
                         <ImageView
                             android:id="@+id/voucher3Image1"
