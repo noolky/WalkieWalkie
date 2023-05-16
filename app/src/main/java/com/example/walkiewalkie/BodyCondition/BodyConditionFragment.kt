@@ -1,6 +1,7 @@
 package com.example.walkiewalkie.BodyCondition
 
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +12,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.walkiewalkie.DataBase.DataBMI
+import com.example.walkiewalkie.DataBase.Helper
 import com.example.walkiewalkie.R
 
 
@@ -20,7 +21,8 @@ class BodyConditionFragment : Fragment() {
     private lateinit var buttonCal: ImageButton
     private lateinit var BMIText:TextView
     //this can the DataBMI name when combine aden data
-    private lateinit var dataBaseBMI: DataBMI
+    private lateinit var dataBaseBMI: Helper
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +32,9 @@ class BodyConditionFragment : Fragment() {
 
         // Inflate the layout for this fragment
        val view= inflater.inflate(R.layout.fragment_body_condition, container, false )
-
-        dataBaseBMI= DataBMI(requireContext())
+        val sharedPreferences = context?.getSharedPreferences("your_preference_name", Context.MODE_PRIVATE)
+        val username = sharedPreferences?.getString("username", null)
+        dataBaseBMI= Helper(requireContext())
 
         buttonCal=view.findViewById<ImageButton>(R.id.BMIbutton)
         buttonCal.setOnClickListener{
@@ -40,7 +43,7 @@ class BodyConditionFragment : Fragment() {
 
         BMIText =view.findViewById(R.id.TvBmiResult)
 
-        val LastestBMI=dataBaseBMI.getLastestBMI()
+        val LastestBMI=dataBaseBMI.getLatestBMIForUser(username.toString())
         val BMIResult2Digit =LastestBMI
 
         val resultSuggestion1 = view?.findViewById<TextView>(R.id.TvSg1Result)
@@ -54,7 +57,6 @@ class BodyConditionFragment : Fragment() {
         var color = 0
         var bodyIndex=""
         var textBDdec=""
-
             if(LastestBMI.toString().isEmpty()){
             // Handle the case where no latest BMI value is available
             BMIText.text = "No data available"
@@ -81,6 +83,7 @@ class BodyConditionFragment : Fragment() {
                     Sg1="Maintain a balanced diet with a variety of nutrients."
                     Sg2="Engage in regular physical activity for overall health."
                     Sg3="Prioritize stress management and quality sleep for overall well-being."
+                    textBDdec=" You BMI Status is "
                     color = R.color.Normal
                     bodyIndex="Normal"
                 }

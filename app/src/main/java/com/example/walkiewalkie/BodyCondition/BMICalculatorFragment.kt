@@ -12,15 +12,18 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.walkiewalkie.DataBase.DataBMI
+import com.example.walkiewalkie.DataBase.Helper
 import com.example.walkiewalkie.R
 
 class BMICalculatorFragment : Fragment() {
     //this can the DataBMI name when combine aden data
-   private lateinit var dbBMI: DataBMI
+   private lateinit var dbBMI: Helper
     private lateinit var weightText: EditText
     private lateinit var heightText: EditText
     private lateinit var calButton: Button
+    private lateinit var ChangeButton:Button
+    private var saveBMIResult: Float = 0f
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,12 +33,15 @@ class BMICalculatorFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_b_m_i_calculator, container, false)
 
+
+        val sharedPreferences = context?.getSharedPreferences("your_preference_name", Context.MODE_PRIVATE)
+        val username = sharedPreferences?.getString("username", null)
         //this can the DataBMI name when combine aden data
-        dbBMI= DataBMI(requireContext())
+        dbBMI= Helper(requireContext())
         weightText = view.findViewById(R.id.etWeight)
         heightText = view.findViewById(R.id.etHeight)
         calButton = view.findViewById(R.id.btnCalculate)
-
+        ChangeButton = view.findViewById(R.id.changeBMIButton)
         calButton.setOnClickListener {
             val weight = weightText.text.toString()
             val height = heightText.text.toString()
@@ -59,13 +65,17 @@ class BMICalculatorFragment : Fragment() {
                     // get result with 2 decimal
                     val bmi2Digit = String.format("%.2f", bmi).toFloat()
                     displayResult(bmi2Digit)
+                    saveBMIResult = bmi2Digit
 
 
-                    dbBMI.saveBMI(weight, height, bmi2Digit)
                 }
             }
 
             closeKeyboard(view)
+        }
+
+        ChangeButton.setOnClickListener{
+            dbBMI.updateBMI(username.toString(), saveBMIResult)
         }
 
         return view

@@ -1,6 +1,8 @@
 package com.example.walkiewalkie.loginRegister
 
+import android.content.Context
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +24,8 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        val sharedPreferences = context?.getSharedPreferences("YourSharedPreferencesName", Context.MODE_PRIVATE)
+        val username = sharedPreferences?.getString("username", null)
         textName = view.findViewById(R.id.textName)
         textPhone = view.findViewById(R.id.textPhone)
         textEmail = view.findViewById(R.id.textEmail)
