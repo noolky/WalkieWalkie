@@ -48,4 +48,169 @@
         ads:adSize="SMART_BANNER"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />
 
+    <TextView
+        android:id="@+id/stepReward"
+        android:layout_width="match_parent"
+        android:layout_height="183dp"
+        android:layout_marginTop="150dp"
+        android:text="\n\n
+10000 Steps (5 Coins)\n
+20000 Steps (10 Coins)\n
+50000 Steps (60 Coins)\n\n
+Once u hit the goal, the coins will be credited automatically.\n
+Each voucher required 1000 coins.
+"
+        android:textColor="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/dailyGoal"
+        android:layout_width="381dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="Daily Goal :"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <ScrollView
+        android:layout_width="380dp"
+        android:layout_height="200dp"
+        android:layout_above="@id/adView">
+
+        <LinearLayout
+            android:layout_width="380dp"
+            android:layout_height="200dp"
+            android:orientation="horizontal">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="160dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/voucher1ImageButtonR"
+                            android:layout_width="137dp"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Voucher 1"
+                            android:text="Reset"
+                            android:visibility="gone" />
+
+                        <Button
+                            android:id="@+id/voucher1ImageButton"
+                            android:layout_width="145dp"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Voucher 1"
+                            android:text="Redeem"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/voucher1Image1"
+                            android:layout_width="300dp"
+                            android:layout_height="146dp"
+                            android:src="@drawable/voucher_1"
+                            android:visibility="visible"/>
+
+                        <ImageView
+                            android:id="@+id/voucher1Image2"
+                            android:layout_width="300dp"
+                            android:layout_height="146dp"
+                            android:src="@drawable/voucher_1b"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/voucher2ImageButton"
+                            android:layout_width="131dp"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Voucher 2"
+                            android:src="@drawable/voucher_2"
+                            android:text="Redeem"
+                            android:visibility="visible" />
+
+                        <Button
+                            android:id="@+id/voucher2ImageButtonR"
+                            android:layout_width="131dp"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Voucher 2"
+                            android:src="@drawable/voucher_2"
+                            android:text="Reset"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/voucher2Image1"
+                            android:layout_width="300dp"
+                            android:layout_height="146dp"
+                            android:src="@drawable/voucher_2"
+                            android:visibility="visible"/>
+
+                        <ImageView
+                            android:id="@+id/voucher2Image2"
+                            android:layout_width="300dp"
+                            android:layout_height="146dp"
+                            android:src="@drawable/voucher_2b"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/voucher3ImageButton"
+                            android:layout_width="113dp"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Voucher 3"
+                            android:src="@drawable/voucher_3"
+                            android:text="Redeem"
+                            android:visibility="visible"
+                            />
+
+                        <Button
+                            android:id="@+id/voucher3ImageButtonR"
+                            android:layout_width="113dp"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Voucher 3"
+                            android:src="@drawable/voucher_3"
+                            android:text="Reset"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/voucher3Image1"
+                            android:layout_width="300dp"
+                            android:layout_height="146dp"
+                            android:src="@drawable/voucher_3"
+                            android:visibility="visible"/>
+
+                        <ImageView
+                            android:id="@+id/voucher3Image2"
+                            android:layout_width="300dp"
+                            android:layout_height="146dp"
+                            android:src="@drawable/voucher_3b"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+        </LinearLayout>
+
+    </ScrollView>
+
 </RelativeLayout>

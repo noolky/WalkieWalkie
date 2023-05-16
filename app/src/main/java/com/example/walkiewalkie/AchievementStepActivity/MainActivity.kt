@@ -36,9 +36,6 @@ class MainActivity : BaseActivity(), Handler.Callback {
     private lateinit var movementTotalKmTimeTv: TextView
     private lateinit var movementTotalStepsTimeTv: TextView
 
-
-
-
     override fun getLayoutId(): Int {
         return R.layout.activity_step
     }
