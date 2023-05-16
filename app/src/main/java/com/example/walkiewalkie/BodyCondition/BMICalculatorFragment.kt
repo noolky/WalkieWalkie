@@ -41,7 +41,8 @@ class BMICalculatorFragment : Fragment() {
         weightText = view.findViewById(R.id.etWeight)
         heightText = view.findViewById(R.id.etHeight)
         calButton = view.findViewById(R.id.btnCalculate)
-        ChangeButton = view.findViewById(R.id.changeBMIButton)
+        ChangeButton = view.findViewById(R.id.BtnSetBMI)
+
         calButton.setOnClickListener {
             val weight = weightText.text.toString()
             val height = heightText.text.toString()
@@ -67,15 +68,16 @@ class BMICalculatorFragment : Fragment() {
                     displayResult(bmi2Digit)
                     saveBMIResult = bmi2Digit
 
+                    ChangeButton.setOnClickListener{
+                        dbBMI.updateBMI(username.toString(), saveBMIResult)
+                        Toast.makeText(requireContext(), "BMI successfully set up ", Toast.LENGTH_LONG).show()
+
+                    }
 
                 }
             }
 
             closeKeyboard(view)
-        }
-
-        ChangeButton.setOnClickListener{
-            dbBMI.updateBMI(username.toString(), saveBMIResult)
         }
 
         return view
@@ -93,6 +95,18 @@ class BMICalculatorFragment : Fragment() {
                 Toast.makeText(requireContext(), "Height is empty", Toast.LENGTH_LONG).show()
                 false
             }
+            else -> true
+        }
+    }
+
+    private fun validateBMI(BMI: String? ): Boolean {
+        return when {
+            BMI.isNullOrEmpty() -> {
+                Toast.makeText(requireContext(), "BMI is empty", Toast.LENGTH_LONG).show()
+                false
+            }
+
+
             else -> true
         }
     }

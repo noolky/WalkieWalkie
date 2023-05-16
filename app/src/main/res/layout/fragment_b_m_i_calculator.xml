@@ -177,21 +177,21 @@
         android:textStyle="bold"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvHeight" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CvResult"
-        android:layout_width="318dp"
-        android:layout_height="120dp"
+        android:layout_width="338dp"
+        android:layout_height="83dp"
         android:layout_marginTop="5dp"
         app:cardBackgroundColor="@color/bar_background"
         app:cardCornerRadius="20dp"
         app:cardElevation="15dp"
         app:cardMaxElevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCalculate">
 
@@ -206,16 +206,16 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textColor="@color/text_hint"
-                android:textSize="45sp"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/Tvresult"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="24dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_green_dark"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -224,19 +224,24 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textColor="@color/text_hint"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/changeBMIButton"
+        android:id="@+id/BtnSetBMI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="Button"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:elevation="20dp"
+        android:text="Set Current BMI"
+        android:textStyle="bold"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.265"
-        app:layout_constraintStart_toEndOf="@+id/BmiLogo"
-        tools:layout_editor_absoluteY="43dp" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CvResult" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
