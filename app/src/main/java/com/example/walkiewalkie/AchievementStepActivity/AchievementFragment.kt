@@ -65,7 +65,6 @@ class AchievementFragment : Fragment() {
                 databaseHelper.updateTotalCoins(totalCoins)
                 view?.findViewById<TextView>(R.id.tv_total_coins)?.text = "Total coins: $totalCoins"
 
-
                 val voucher1Image1 = view?.findViewById<ImageView>(R.id.voucher1Image1)
                 val voucher1Image2 = view?.findViewById<ImageView>(R.id.voucher1Image2)
                 val voucher1ImageButton = view?.findViewById<Button>(R.id.voucher1ImageButton)
