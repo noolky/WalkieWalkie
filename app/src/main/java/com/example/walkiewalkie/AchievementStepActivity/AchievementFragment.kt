@@ -70,7 +70,6 @@ class AchievementFragment : Fragment() {
                 val voucher1ImageButton = view?.findViewById<Button>(R.id.voucher1ImageButton)
                 val voucher1ImageButtonR = view?.findViewById<Button>(R.id.voucher1ImageButtonR)
 
-
                 if (voucher1Image1?.visibility == View.VISIBLE) {
                     voucher1Image1.visibility = View.GONE
                     voucher1Image2?.visibility = View.VISIBLE
