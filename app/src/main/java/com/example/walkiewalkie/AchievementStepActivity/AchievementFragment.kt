@@ -1,5 +1,6 @@
 package com.example.walkiewalkie.AchievementStepActivity
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -7,9 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.walkiewalkie.DataBase.DatabaseHelper
 import com.example.walkiewalkie.R
@@ -25,7 +24,15 @@ class AchievementFragment : Fragment() {
     private lateinit var adView: AdView
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var dBhelper: DBhelper
     private val LAST_REWARDED_AD_VIEW_TIMESTAMP_KEY = "last_rewarded_ad_view_timestamp"
+    val voucher1ImageButton = view?.findViewById<ImageButton>(R.id.voucher1ImageButton)
+    val voucher2ImageButton = view?.findViewById<ImageButton>(R.id.voucher2ImageButton)
+    val voucher3ImageButton = view?.findViewById<ImageButton>(R.id.voucher3ImageButton)
+
+
+
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_achievement, container, false)
@@ -45,16 +52,177 @@ class AchievementFragment : Fragment() {
         rewardedAdViewCount = sharedPreferences.getInt("rewarded_ad_view_count", 0)
 
 
-        /*
-        // add value
 
+      /*  // add value
         val databaseHelper = DatabaseHelper(requireContext())
         // Add a value to the total coins in the database
-        val coinsToAdd = 10
+        val coinsToAdd = 10001
         databaseHelper.updateTotalCoins(databaseHelper.getTotalCoins() + coinsToAdd)
         val updatedTotalCoins = databaseHelper.getTotalCoins()
-        view.findViewById<TextView>(R.id.tv_total_coins).text = "Total coins: $updatedTotalCoins"
-*/
+        view.findViewById<TextView>(R.id.tv_total_coins).text = "Total coins: $updatedTotalCoins"*/
+
+        view?.findViewById<Button>(R.id.voucher1ImageButton)?.setOnClickListener {
+            if (totalCoins >= 1000) {
+                totalCoins -= 1000
+                databaseHelper.updateTotalCoins(totalCoins)
+                view?.findViewById<TextView>(R.id.tv_total_coins)?.text = "Total coins: $totalCoins"
+
+
+                val voucher1Image1 = view?.findViewById<ImageView>(R.id.voucher1Image1)
+                val voucher1Image2 = view?.findViewById<ImageView>(R.id.voucher1Image2)
+                val voucher1ImageButton = view?.findViewById<Button>(R.id.voucher1ImageButton)
+                val voucher1ImageButtonR = view?.findViewById<Button>(R.id.voucher1ImageButtonR)
+
+
+                if (voucher1Image1?.visibility == View.VISIBLE) {
+                    voucher1Image1.visibility = View.GONE
+                    voucher1Image2?.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "Voucher1 Redeemed", Toast.LENGTH_SHORT).show()
+
+                    voucher1ImageButton?.visibility = View.GONE
+                    voucher1ImageButtonR?.visibility = View.VISIBLE
+                } else {
+                    Toast.makeText(requireContext(), "Not enough coins.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        view?.findViewById<Button>(R.id.voucher2ImageButton)?.setOnClickListener {
+            if (totalCoins >= 1000) {
+                totalCoins -= 1000
+                databaseHelper.updateTotalCoins(totalCoins)
+                view?.findViewById<TextView>(R.id.tv_total_coins)?.text = "Total coins: $totalCoins"
+
+                val voucher2Image1 = view?.findViewById<ImageView>(R.id.voucher2Image1)
+                val voucher2Image2 = view?.findViewById<ImageView>(R.id.voucher2Image2)
+                val voucher2ImageButton = view?.findViewById<Button>(R.id.voucher2ImageButton)
+                val voucher2ImageButtonR = view?.findViewById<Button>(R.id.voucher2ImageButtonR)
+
+                if (voucher2Image1?.visibility == View.VISIBLE) {
+                    voucher2Image1.visibility = View.GONE
+                    voucher2Image2?.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "Voucher2 Redeemed", Toast.LENGTH_SHORT).show()
+                    voucher2ImageButton?.visibility = View.GONE
+                    voucher2ImageButtonR?.visibility = View.VISIBLE
+
+                    //reset
+                    //voucher2Image1?.visibility = View.VISIBLE
+                    //voucher2Image2?.visibility = View.GONE
+                } else {
+                    Toast.makeText(requireContext(), "Not enough coins.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
+        view?.findViewById<Button>(R.id.voucher3ImageButton)?.setOnClickListener {
+            if (totalCoins >= 1000) {
+                totalCoins -= 1000
+                databaseHelper.updateTotalCoins(totalCoins)
+                view?.findViewById<TextView>(R.id.tv_total_coins)?.text = "Total coins: $totalCoins"
+
+                val voucher3Image1 = view?.findViewById<ImageView>(R.id.voucher3Image1)
+                val voucher3Image2 = view?.findViewById<ImageView>(R.id.voucher3Image2)
+                val voucher3ImageButton = view?.findViewById<Button>(R.id.voucher3ImageButton)
+                val voucher3ImageButtonR = view?.findViewById<Button>(R.id.voucher3ImageButtonR)
+
+                if (voucher3Image1?.visibility == View.VISIBLE) {
+                    voucher3Image1.visibility = View.GONE
+                    voucher3Image2?.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "Voucher3 Redeemed", Toast.LENGTH_SHORT).show()
+                    voucher3ImageButton?.visibility = View.GONE
+                    voucher3ImageButtonR?.visibility = View.VISIBLE
+                    //reset
+                    //voucher3Image1?.visibility = View.VISIBLE
+                    //voucher3Image2?.visibility = View.GONE
+
+                } else {
+                    Toast.makeText(requireContext(), "Not enough coins.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+//reset voucher
+
+        view?.findViewById<Button>(R.id.voucher1ImageButtonR)?.setOnClickListener {
+            val alertDialogBuilder = AlertDialog.Builder(requireContext())
+            val voucher1ImageButton = view?.findViewById<Button>(R.id.voucher1ImageButton)
+            val voucher1ImageButtonR = view?.findViewById<Button>(R.id.voucher1ImageButtonR)
+            val voucher1Image1 = view?.findViewById<ImageView>(R.id.voucher1Image1)
+            val voucher1Image2 = view?.findViewById<ImageView>(R.id.voucher1Image2)
+
+            alertDialogBuilder.setTitle("Confirmation")
+            alertDialogBuilder.setMessage("Are you sure you want to reset Voucher 1?")
+            alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
+                voucher1ImageButtonR?.visibility = View.GONE
+                voucher1ImageButton?.visibility = View.VISIBLE
+
+                if (voucher1Image2?.visibility == View.VISIBLE) {
+                voucher1Image2.visibility = View.GONE
+                voucher1Image1?.visibility = View.VISIBLE
+                Toast.makeText(requireContext(), "Voucher1 reset done", Toast.LENGTH_SHORT).show()
+                }
+            }
+            alertDialogBuilder.setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+        }
+
+        view?.findViewById<Button>(R.id.voucher2ImageButtonR)?.setOnClickListener {
+            val alertDialogBuilder = AlertDialog.Builder(requireContext())
+            val voucher2ImageButton = view?.findViewById<Button>(R.id.voucher2ImageButton)
+            val voucher2ImageButtonR = view?.findViewById<Button>(R.id.voucher2ImageButtonR)
+            val voucher2Image1 = view?.findViewById<ImageView>(R.id.voucher2Image1)
+            val voucher2Image2 = view?.findViewById<ImageView>(R.id.voucher2Image2)
+
+            alertDialogBuilder.setTitle("Confirmation")
+            alertDialogBuilder.setMessage("Are you sure you want to reset Voucher 1?")
+            alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
+                voucher2ImageButtonR?.visibility = View.GONE
+                voucher2ImageButton?.visibility = View.VISIBLE
+
+                if (voucher2Image2?.visibility == View.VISIBLE) {
+                    voucher2Image2.visibility = View.GONE
+                    voucher2Image1?.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "Voucher1 reset done", Toast.LENGTH_SHORT).show()
+                }
+            }
+            alertDialogBuilder.setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+        }
+
+        view?.findViewById<Button>(R.id.voucher3ImageButtonR)?.setOnClickListener {
+            val alertDialogBuilder = AlertDialog.Builder(requireContext())
+            val voucher3ImageButton = view?.findViewById<Button>(R.id.voucher3ImageButton)
+            val voucher3ImageButtonR = view?.findViewById<Button>(R.id.voucher3ImageButtonR)
+            val voucher3Image1 = view?.findViewById<ImageView>(R.id.voucher3Image1)
+            val voucher3Image2 = view?.findViewById<ImageView>(R.id.voucher3Image2)
+
+            alertDialogBuilder.setTitle("Confirmation")
+            alertDialogBuilder.setMessage("Are you sure you want to reset Voucher 1?")
+            alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
+                voucher3ImageButtonR?.visibility = View.GONE
+                voucher3ImageButton?.visibility = View.VISIBLE
+
+                if (voucher3Image2?.visibility == View.VISIBLE) {
+                    voucher3Image2.visibility = View.GONE
+                    voucher3Image1?.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "Voucher1 reset done", Toast.LENGTH_SHORT).show()
+                }
+            }
+            alertDialogBuilder.setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
+        }
+
+
     }
 
     private fun adsLoadedProgress() {

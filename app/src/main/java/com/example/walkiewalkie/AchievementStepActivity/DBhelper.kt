@@ -4,8 +4,9 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.walkiewalkie.DataBase.DatabaseHelper
 
-class DBhelper(context: Context) : SQLiteOpenHelper(context, "StepDB", null, 1) {
+class DBhelper(private val context: Context) : SQLiteOpenHelper(context, "StepDB", null, 1) {
     private val CREATE_BANNER = ("create table step ("
             + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + "curDate TEXT, "
@@ -20,7 +21,6 @@ class DBhelper(context: Context) : SQLiteOpenHelper(context, "StepDB", null, 1) 
 
     fun addNewData(stepEntity: StepEntity) {
         val stepDb = readableDatabase
-
         val values = ContentValues()
         values.put("curDate", stepEntity.curDate)
         values.put("totalSteps", stepEntity.steps)
@@ -58,6 +58,19 @@ class DBhelper(context: Context) : SQLiteOpenHelper(context, "StepDB", null, 1) 
             val totalSteps = if (totalStepsIndex != -1) cursor.getString(totalStepsIndex) else ""
             val entity = StepEntity(curDate, totalSteps)
             dataList.add(entity)
+
+            if (totalSteps.toInt() > 10000) {
+                val databaseHelper = DatabaseHelper(context)
+                databaseHelper.updateTotalCoins(databaseHelper.getTotalCoins() + 5)
+            }
+            else if(totalSteps.toInt()>20000){
+                val databaseHelper = DatabaseHelper(context)
+                databaseHelper.updateTotalCoins(databaseHelper.getTotalCoins() + 10)
+            }
+            else if (totalSteps.toInt()>50000){
+                val databaseHelper = DatabaseHelper(context)
+                databaseHelper.updateTotalCoins(databaseHelper.getTotalCoins() + 60)
+            }
         }
         // Close the database and cursor
         stepDb.close()
