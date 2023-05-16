@@ -26,13 +26,6 @@ class AchievementFragment : Fragment() {
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var dBhelper: DBhelper
     private val LAST_REWARDED_AD_VIEW_TIMESTAMP_KEY = "last_rewarded_ad_view_timestamp"
-    val voucher1ImageButton = view?.findViewById<ImageButton>(R.id.voucher1ImageButton)
-    val voucher2ImageButton = view?.findViewById<ImageButton>(R.id.voucher2ImageButton)
-    val voucher3ImageButton = view?.findViewById<ImageButton>(R.id.voucher3ImageButton)
-
-
-
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_achievement, container, false)
@@ -51,17 +44,17 @@ class AchievementFragment : Fragment() {
         sharedPreferences = requireContext().getSharedPreferences("com.example.walkiewalkie", Context.MODE_PRIVATE)
         rewardedAdViewCount = sharedPreferences.getInt("rewarded_ad_view_count", 0)
 
-        // add value
+/*        // add value
         val databaseHelper = DatabaseHelper(requireContext())
         // Add a value to the total coins in the database
         val coinsToAdd = 3000
         databaseHelper.updateTotalCoins(databaseHelper.getTotalCoins() + coinsToAdd)
         val updatedTotalCoins = databaseHelper.getTotalCoins()
-        view.findViewById<TextView>(R.id.tv_total_coins).text = "Total coins: $updatedTotalCoins"
+        view.findViewById<TextView>(R.id.tv_total_coins).text = "Total coins: $updatedTotalCoins"*/
 
         view?.findViewById<Button>(R.id.voucher1ImageButton)?.setOnClickListener {
-            if (totalCoins >= 1000) {
-                totalCoins -= 1000
+            if (totalCoins >= 1) {
+                totalCoins -= 1
                 databaseHelper.updateTotalCoins(totalCoins)
                 view?.findViewById<TextView>(R.id.tv_total_coins)?.text = "Total coins: $totalCoins"
 
@@ -83,8 +76,8 @@ class AchievementFragment : Fragment() {
         }
 
         view?.findViewById<Button>(R.id.voucher2ImageButton)?.setOnClickListener {
-            if (totalCoins >= 1000) {
-                totalCoins -= 1000
+            if (totalCoins >= 1) {
+                totalCoins -= 1
                 databaseHelper.updateTotalCoins(totalCoins)
                 view?.findViewById<TextView>(R.id.tv_total_coins)?.text = "Total coins: $totalCoins"
 
@@ -107,8 +100,8 @@ class AchievementFragment : Fragment() {
 
 
         view?.findViewById<Button>(R.id.voucher3ImageButton)?.setOnClickListener {
-            if (totalCoins >= 1000) {
-                totalCoins -= 1000
+            if (totalCoins >= 1) {
+                totalCoins -= 1
                 databaseHelper.updateTotalCoins(totalCoins)
                 view?.findViewById<TextView>(R.id.tv_total_coins)?.text = "Total coins: $totalCoins"
 
@@ -145,9 +138,9 @@ class AchievementFragment : Fragment() {
                 voucher1ImageButton?.visibility = View.VISIBLE
 
                 if (voucher1Image2?.visibility == View.VISIBLE) {
-                voucher1Image2.visibility = View.GONE
-                voucher1Image1?.visibility = View.VISIBLE
-                Toast.makeText(requireContext(), "Voucher1 reset done", Toast.LENGTH_SHORT).show()
+                    voucher1Image2.visibility = View.GONE
+                    voucher1Image1?.visibility = View.VISIBLE
+                    Toast.makeText(requireContext(), "Voucher1 reset done", Toast.LENGTH_SHORT).show()
                 }
             }
             alertDialogBuilder.setNegativeButton("No") { dialog, _ ->
