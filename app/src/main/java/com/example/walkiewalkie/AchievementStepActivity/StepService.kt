@@ -23,7 +23,7 @@ class StepService : Service(), SensorEventListener {
     private var currentStep: Int = 0
     private var sensorManager: SensorManager? = null
     //database
-    private var stepData: DBstep? = null
+    private var stepData: DBhelper? = null
 
     //detect sensor 0-counter 1-detector
     private var stepSensor = -1
@@ -128,7 +128,7 @@ class StepService : Service(), SensorEventListener {
 
     private fun initTodayData() {
         currentDate = TimeUtil.getCurrentDate()
-        stepData = DBstep(applicationContext)
+        stepData = DBhelper(applicationContext)
         val entity = stepData!!.getCurDataByDate(currentDate!!)
         currentStep = if (entity == null) 0 else Integer.parseInt(entity.steps!!)
     }

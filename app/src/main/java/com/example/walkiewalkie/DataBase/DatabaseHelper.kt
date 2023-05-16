@@ -7,8 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper
 
 // DatabaseHelper class to manage database creation and version management
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "CoinDatabase", null, 1) {
+
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS Coins (id INTEGER PRIMARY KEY, total INTEGER)")
+        db.execSQL("CREATE TABLE IF NOT EXISTS Coins (id INTEGER PRIMARY KEY, total INTEGER, last_view_timestamp INTEGER DEFAULT 0)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -37,5 +38,29 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "CoinDatabase
         db.close()
         return totalCoins
     }
-}
+    // Method to update last view timestamp in database
+    fun updateLastViewTimestamp(timestamp: Long) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("last_view_timestamp", timestamp)
 
+        val whereClause = "id = ?"
+        val whereArgs = arrayOf("1")
+        db.update("Coins", contentValues, whereClause, whereArgs)
+
+        db.close()
+    }
+
+
+    fun getLastViewTimestamp(): Long {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT last_view_timestamp FROM Coins WHERE id=1", null)
+        var lastViewTimestamp = 0L
+        if (cursor.moveToFirst()) {
+            lastViewTimestamp = cursor.getLong(0)
+        }
+        cursor.close()
+        db.close()
+        return lastViewTimestamp
+    }
+}

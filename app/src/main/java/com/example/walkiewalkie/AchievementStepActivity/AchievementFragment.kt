@@ -43,6 +43,18 @@ class AchievementFragment : Fragment() {
         // Initialize SharedPreferences
         sharedPreferences = requireContext().getSharedPreferences("com.example.walkiewalkie", Context.MODE_PRIVATE)
         rewardedAdViewCount = sharedPreferences.getInt("rewarded_ad_view_count", 0)
+
+
+        /*
+        // add value
+
+        val databaseHelper = DatabaseHelper(requireContext())
+        // Add a value to the total coins in the database
+        val coinsToAdd = 10
+        databaseHelper.updateTotalCoins(databaseHelper.getTotalCoins() + coinsToAdd)
+        val updatedTotalCoins = databaseHelper.getTotalCoins()
+        view.findViewById<TextView>(R.id.tv_total_coins).text = "Total coins: $updatedTotalCoins"
+*/
     }
 
     private fun adsLoadedProgress() {
@@ -118,27 +130,28 @@ class AchievementFragment : Fragment() {
         view?.findViewById<Button>(R.id.btn_rewarded_ad)?.setOnClickListener {
             if (::rewardedAd.isInitialized) {
                 val currentTimeMillis = System.currentTimeMillis()
-                val lastViewTimestamp = sharedPreferences.getLong(LAST_REWARDED_AD_VIEW_TIMESTAMP_KEY, 0L)
+                val lastViewTimestamp = databaseHelper.getLastViewTimestamp()
                 val elapsedMillis = currentTimeMillis - lastViewTimestamp
 
                 if (elapsedMillis >= 24 * 60 * 60 * 1000) {
                     rewardedAdViewCount = 0
                 }
 
-                if (rewardedAdViewCount < MAX_REWARDED_ADS_VIEW_COUNT && elapsedMillis < 24 * 60 * 60 * 1000) {
+                if (rewardedAdViewCount < MAX_REWARDED_ADS_VIEW_COUNT) {
                     val activityContext = requireActivity()
 
                     rewardedAd.fullScreenContentCallback = object : FullScreenContentCallback() {
                         override fun onAdDismissedFullScreenContent() {
-                            createAndLoadRewardedAd() // Load a new rewarded ad
+                            createAndLoadRewardedAd()
                             Log.d(TAG, "Rewarded ad dismissed")
                             databaseHelper.updateTotalCoins(totalCoins)
-                            resetRewardedAdCountAndTimestamp() // Reset the count and timestamp
+                            databaseHelper.updateLastViewTimestamp(currentTimeMillis)
+                            rewardedAdViewCount++
+                            resetRewardedAdCountAndTimestamp()
                         }
 
                         override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
                             Log.d(TAG, "Failed to show rewarded ad: ${adError?.message}")
-                            // Handle the error when the rewarded ad fails to show
                         }
 
                         override fun onAdShowedFullScreenContent() {
@@ -152,6 +165,12 @@ class AchievementFragment : Fragment() {
                         Log.d(TAG, "User earned reward: $rewardAmount $rewardType")
                         totalCoins += 3
                         view?.findViewById<TextView>(R.id.tv_total_coins)?.text = "Total coins: $totalCoins"
+
+                        // Update the timestamp of the last rewarded ad view
+                        val currentTimeMillis = System.currentTimeMillis()
+                        databaseHelper.updateLastViewTimestamp(currentTimeMillis)
+                        resetRewardedAdCountAndTimestamp()
+
                         Toast.makeText(
                             requireContext(),
                             "3 coins successfully earned",
@@ -163,6 +182,7 @@ class AchievementFragment : Fragment() {
                         editor.putLong(LAST_REWARDED_AD_VIEW_TIMESTAMP_KEY, currentTimeMillis)
                         editor.apply()
                         rewardedAdViewCount++
+                        resetRewardedAdCountAndTimestamp()
                     }
                 } else {
                     Toast.makeText(
@@ -186,10 +206,9 @@ class AchievementFragment : Fragment() {
     private fun resetRewardedAdCountAndTimestamp() {
         val currentTimeMillis = System.currentTimeMillis()
         val editor = sharedPreferences.edit()
-        editor.putInt("rewarded_ad_view_count", 0)
+        editor.putInt("rewarded_ad_view_count", rewardedAdViewCount)
         editor.putLong(LAST_REWARDED_AD_VIEW_TIMESTAMP_KEY, currentTimeMillis)
         editor.apply()
     }
+
 }
-
-

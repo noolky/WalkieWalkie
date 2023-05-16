@@ -23,7 +23,7 @@ class MainActivity : BaseActivity(), Handler.Callback {
     private var curSelDate: String = ""
     private val df = DecimalFormat("#.##")
     private val stepEntityList: MutableList<StepEntity> = ArrayList()
-    private var stepData: DBstep? = null
+    private var stepData: DBhelper? = null
     private var isBind = false
     private val mGetReplyMessenger = Messenger(Handler(this))
     private var messenger: Messenger? = null
@@ -186,7 +186,7 @@ class MainActivity : BaseActivity(), Handler.Callback {
      * get step record
      */
     private fun getRecordList() {
-        stepData = DBstep(this)
+        stepData = DBhelper(this)
         stepEntityList.clear()
         stepEntityList.addAll(stepData!!.getAllDatas())
         if (stepEntityList.size > 7) {
