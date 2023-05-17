@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -46,10 +47,20 @@ class BodyConditionFragment : Fragment() {
         val LastestBMI=dataBaseBMI.getLatestBMIForUser(username.toString())
         val BMIResult2Digit =LastestBMI
 
+        val LastestHeight=dataBaseBMI.getLatestHeightForUser(username.toString())
+        val CurrentHeight =LastestHeight.toString()
+
+        val LastestWeight=dataBaseBMI.getLatestWeightForUser(username.toString())
+        val CurrentWeight =LastestWeight.toString()
+
+
         val resultSuggestion1 = view?.findViewById<TextView>(R.id.TvSg1Result)
         val resultSuggestion2 = view?.findViewById<TextView>(R.id.TvSg2Result)
         val resultSuggestion3 = view?.findViewById<TextView>(R.id.TvSg3result)
-
+        val foodDetails=view?.findViewById<TextView>(R.id.TvDetails1)
+        val exerciseDetails=view?.findViewById<TextView>(R.id.TvDetails2)
+        val Height=view?.findViewById<TextView>(R.id.CurrentHeight)
+        val Weight=view?.findViewById<TextView>(R.id.CurrentWeight)
 
         var Sg1=""
         var Sg2=""
@@ -57,7 +68,12 @@ class BodyConditionFragment : Fragment() {
         var color = 0
         var bodyIndex=""
         var textBDdec=""
-            if(LastestBMI.toString().isEmpty()){
+        var textHeight=""
+        var textWeight=""
+        var food=""
+        var exercise=""
+
+        if(LastestBMI.toString().isEmpty()){
             // Handle the case where no latest BMI value is available
             BMIText.text = "No data available"
             // Set default values for suggestions or handle them accordingly
@@ -77,6 +93,13 @@ class BodyConditionFragment : Fragment() {
                     color = R.color.UnderWeight
                     textBDdec=" You BMI Status is "
                     bodyIndex="UnderWeight"
+                    food="1)Increase calorie intake with nutrient-dense foods like avocados, nuts, and lean protein sources.\n" +
+                            "2)Include healthy carbohydrates like whole grains, potatoes, and quinoa.\n" +
+                            "3)Incorporate calorie-rich snacks such as dried fruits and nut butter."
+
+                    exercise="1)Focus on strength training exercises to build muscle mass.\n" +
+                            "2)Incorporate resistance training with moderate weights and proper form.\n" +
+                            "3)Engage in activities like yoga or Pilates to improve flexibility and overall body strength."
                 }
 
                 BMIResult2Digit in 18.50..24.99 -> {
@@ -86,6 +109,13 @@ class BodyConditionFragment : Fragment() {
                     textBDdec=" You BMI Status is "
                     color = R.color.Normal
                     bodyIndex="Normal"
+                    food="1)Maintain a balanced diet with a variety of fruits, vegetables, whole grains, lean proteins, and healthy fats.\n" +
+                            "2)Focus on portion control and mindful eating.\n" +
+                            "3)Stay hydrated and limit the consumption of sugary foods and beverages."
+
+                    exercise="1)Aim for a balanced fitness routine that includes cardiovascular exercises like brisk walking, jogging, or cycling.\n" +
+                            "2)Incorporate strength training exercises to maintain muscle tone and strength.\n" +
+                            "3)Include flexibility exercises like stretching or yoga for improved range of motion."
                 }
 
                 BMIResult2Digit in 25.00..29.99 -> {
@@ -95,6 +125,12 @@ class BodyConditionFragment : Fragment() {
                     color = R.color.Over_Weight
                     textBDdec=" You BMI Status is "
                     bodyIndex="Over Weight"
+                    food="1)Choose nutrient-rich, low-calorie foods such as fruits, vegetables, and lean proteins.\n" +
+                            "2)Incorporate whole grains and healthy fats in moderate portions.\n" +
+                            "3)Limit processed foods, sugary snacks, and beverages high in added sugars."
+                    exercise="1)Engage in moderate-intensity cardiovascular exercises like swimming, dancing, or using an elliptical machine.\n" +
+                            "2)Gradually increase intensity and duration of workouts over time.\n" +
+                            "3)Consider low-impact activities like cycling or water aerobics to reduce stress on joints."
                 }
 
                 BMIResult2Digit > 29.99 -> {
@@ -104,6 +140,12 @@ class BodyConditionFragment : Fragment() {
                     color = R.color.Obese
                     textBDdec=" You BMI Status is "
                     bodyIndex="Obesity"
+                    food="1)Prioritize a diet rich in fruits, vegetables, whole grains, lean proteins, and healthy fats.\n" +
+                            "2)Reduce portion sizes and practice mindful eating.\n" +
+                            "3)Avoid or limit high-calorie, processed foods, sugary snacks, and sugary beverages."
+                    exercise="1)Begin with low-impact exercises like walking or water-based exercises.\n" +
+                            "2)Gradually increase intensity and duration as fitness improves.\n" +
+                            "3)Seek guidance from a certified fitness professional or physical therapist for safe and effective exercise options."
                 }
 
                 else ->{
@@ -115,10 +157,27 @@ class BodyConditionFragment : Fragment() {
                 }
 
             }
+
+
+            if(validateHeightWeight(CurrentWeight,CurrentHeight)){
+                textHeight=CurrentHeight
+                textWeight=CurrentWeight
+            }
+
+            else{
+
+                textHeight="0"
+                textWeight="0"
+            }
+
             BMIText.setTextColor(ContextCompat.getColor(requireContext(), color))
             resultSuggestion1?.text=Sg1
             resultSuggestion2?.text=Sg2
             resultSuggestion3?.text=Sg3
+            Height?.text="Current Height="+textHeight+"CM"
+            Weight?.text="Current Weight="+textWeight+"KG"
+            foodDetails?.text=food
+            exerciseDetails?.text=exercise
 
             BMIText.text=BMIResult2Digit.toString()+textBDdec+bodyIndex
             Log.i("BMI Result ","$BMIResult2Digit")
@@ -126,9 +185,23 @@ class BodyConditionFragment : Fragment() {
 
         }
 
+
+
         return view
     }
 
+    private fun validateHeightWeight(weight: String? ,height: String?): Boolean {
+        return when {
+            weight.isNullOrEmpty() -> {
+                false
+            }
+
+            height.isNullOrEmpty() -> {
+                false
+            }
+            else -> true
+        }
+    }
 
 
 
