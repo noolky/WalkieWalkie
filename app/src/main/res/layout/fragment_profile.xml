@@ -27,37 +27,40 @@
                     android:layout_height="300dp"
                     android:background="@drawable/top_background"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageView7"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="149dp"
+                    android:layout_height="137dp"
                     app:layout_constraintBottom_toBottomOf="@+id/view"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/view"
-                    app:layout_constraintTop_toTopOf="@+id/view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/profile_icon" />
 
                 <TextView
                     android:id="@+id/textName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="116dp"
+                    android:layout_height="31dp"
                     android:text="TextView"
-                    android:textColor="#ffffff"
-                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView7"
-                    app:layout_constraintStart_toStartOf="@+id/imageView7"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.677"
+                    app:layout_constraintStart_toStartOf="@+id/view"
                     app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
+                    android:id="@+id/linearLayout"
+                    android:layout_width="368dp"
+                    android:layout_height="519dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="24dp"
                     android:background="@drawable/white_background"
                     android:elevation="3dp"
                     android:orientation="vertical"
@@ -70,126 +73,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.333"
-                            android:background="@drawable/grey_background"
-                            android:orientation="vertical"
-                            tools:layout_margin="10dp">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_margin="12dp">
-
-                                <ImageView
-                                    android:id="@+id/settingView"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/circle_background"
-                                    android:src="@drawable/setting"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                            <TextView
-                                android:id="@+id/textSetting"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:text="SETTING"
-                                android:textAlignment="center"
-                                android:textColor="#000000"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.333"
-                            android:background="@drawable/grey_background"
-                            android:orientation="vertical"
-                            tools:layout_margin="10dp">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_margin="12dp">
-
-                                <ImageView
-                                    android:id="@+id/friendView"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/circle_background"
-                                    android:src="@drawable/setting"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:srcCompat="@drawable/friend" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                            <TextView
-                                android:id="@+id/textFriend"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:text="FRIEND"
-                                android:textAlignment="center"
-                                android:textColor="#000000"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.333"
-                            android:background="@drawable/grey_background"
-                            android:orientation="vertical"
-                            tools:layout_margin="10dp">
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_margin="12dp">
-
-                                <ImageView
-                                    android:id="@+id/shareView"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/circle_background"
-                                    android:src="@drawable/share"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-
-                            <TextView
-                                android:id="@+id/textView8"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="8dp"
-                                android:text="SHARE"
-                                android:textAlignment="center"
-                                android:textColor="#000000"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-                    </LinearLayout>
+                        android:orientation="horizontal" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -202,18 +86,19 @@
 
                         <TextView
                             android:id="@+id/textPhone"
-                            android:layout_width="wrap_content"
+                            android:layout_width="13dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Phone:"
                             android:textColor="#0F7015"
                             android:textSize="18sp" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/change1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:minHeight="48dp"
                             android:text="Change"
                             android:textAlignment="textEnd"
                             android:textColor="#5b5b5b"
@@ -231,18 +116,19 @@
 
                         <TextView
                             android:id="@+id/textMail"
-                            android:layout_width="wrap_content"
+                            android:layout_width="14dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Email:"
                             android:textColor="#0F7015"
                             android:textSize="18sp" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/change2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:minHeight="48dp"
                             android:text="Change"
                             android:textAlignment="textEnd"
                             android:textColor="#5b5b5b"
@@ -260,18 +146,19 @@
 
                         <TextView
                             android:id="@+id/textPassword"
-                            android:layout_width="wrap_content"
+                            android:layout_width="8dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Password:"
                             android:textColor="#0F7015"
                             android:textSize="18sp" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/change3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:minHeight="48dp"
                             android:text="Change"
                             android:textAlignment="textEnd"
                             android:textColor="#5b5b5b"
@@ -280,7 +167,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="47dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="10dp"
@@ -301,27 +188,52 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Welcome to WALKIE WALKIE"
+                            android:text="WALKIE WALKIE Step Count"
                             android:textAlignment="textEnd"
                             android:textColor="#5b5b5b"
                             android:textSize="16sp" />
                     </LinearLayout>
 
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <Button
+                        android:id="@+id/button5"
+                        style="@android:style/Widget.Button"
+                        android:layout_width="325dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/background_button"
+                        android:text="Edit Profile"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button5"
-                style="@android:style/Widget.Button"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_margin="24dp"
-                android:background="@drawable/background_button"
-                android:text="Edit Profile"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/button8"
+                        style="@android:style/Widget.Button"
+                        android:layout_width="325dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:background="@drawable/background_button"
+                        android:minHeight="48dp"
+                        android:text="Save Profile"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/imageButton6"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/transparent_button_logout"
+                    android:contentDescription="@string/logout"
+                    android:src="@drawable/baseline_exit_logout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

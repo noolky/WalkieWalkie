@@ -219,5 +219,23 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
         val bmi: Float?
     )
 
+    fun updateUserProfile (username: String, updatedName: String, updatedPhone: String, updatedEmail: String, updatedPassword: String): Boolean {
+        val db = writableDatabase
+        val values = ContentValues()
+        values.put("username", updatedName)
+        values.put("phone",updatedPhone)
+        values.put("email", updatedEmail)
+        values.put("password",updatedPassword)
+
+        val whereClause = "username = ?"
+        val whereArgs = arrayOf(username)
+
+        val rowAffected = db.update("Userdata", values, whereClause, whereArgs)
+        db.close()
+
+        return rowAffected != 0
+
+    }
+
 
 }
