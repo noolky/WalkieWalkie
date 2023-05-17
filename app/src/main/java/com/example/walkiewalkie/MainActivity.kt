@@ -1,6 +1,7 @@
 package com.example.walkiewalkie
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -24,5 +25,18 @@ open class MainActivity : AppCompatActivity() {
         navController=Navigation.findNavController(this,R.id.nav_host_fragment)
         setupWithNavController(binding.bottomNavigation,navController)
 
+    }
+
+    override fun onBackPressed() {
+        val alertDialog = AlertDialog.Builder(this)
+            .setTitle("Confirmation")
+            .setMessage("Are you sure you want to logout?")
+            .setPositiveButton("Yes") { _, _ ->
+                super.onBackPressed() // Proceed with the back button action
+            }
+            .setNegativeButton("No", null)
+            .create()
+
+        alertDialog.show()
     }
 }

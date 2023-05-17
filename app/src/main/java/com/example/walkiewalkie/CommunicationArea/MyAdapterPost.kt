@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
@@ -59,6 +60,7 @@ class MyAdapterPost(var postList: ArrayList<DatalistPost>,val currentUserUsernam
                     postList.removeAt(holder.adapterPosition)
                     notifyDataSetChanged() // Notify RecyclerView of data change
                 }
+                Toast.makeText(holder.itemView.context,"Delete Success", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
             btnNo.setOnClickListener {
