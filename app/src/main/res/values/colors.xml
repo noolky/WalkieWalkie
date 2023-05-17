@@ -31,6 +31,9 @@
     <color name="Normal">#8BC34A</color>
     <color name="Over_Weight">#FF5722</color>
     <color name="Obese">#F60505</color>
+
+    <color name="Transparent">#00FFFFF></color>
+
     
     //kengYip
     

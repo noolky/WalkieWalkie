@@ -3,6 +3,7 @@ package com.example.walkiewalkie.loginRegister
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
@@ -42,9 +43,15 @@ class RegisterActivity : AppCompatActivity() {
                 TextUtils.isEmpty(email) || TextUtils.isEmpty(password) ||
                 TextUtils.isEmpty(confirmPassword)) {
                 Toast.makeText(this, "Fill in all of the details", Toast.LENGTH_SHORT).show()
-            } else if (password != confirmPassword) {
+            } else if (!isValidPhoneNumber(phone)){
+                Toast.makeText(this, "Invalid Phone Number, MUST CONTAIN 10 NUMBER", Toast.LENGTH_SHORT).show()
+            } else if (!isValidEmail(email)){
+                Toast.makeText(this,"Invalid Email Format, MUST CONTAIN @ SYMBOL", Toast.LENGTH_SHORT).show()
+            } else if (password.length <= 6){
+                Toast.makeText(this, "Password should be at least 6 Characters long", Toast.LENGTH_SHORT).show()
+            } else if(password != confirmPassword) {
                 Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
-            } else {
+            } else{
                 val savedata = helper.insertData(username, password, phone, email)
 
                 if (savedata) {
@@ -56,5 +63,13 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun isValidEmail( email: String): Boolean{
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.contains("@")
+    }
+
+    private fun isValidPhoneNumber ( phoneNumber: String): Boolean{
+        return phoneNumber.matches(Regex("\\d{10}"))
     }
 }
