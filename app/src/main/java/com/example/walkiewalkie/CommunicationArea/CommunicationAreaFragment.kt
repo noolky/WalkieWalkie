@@ -30,17 +30,21 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         // binding used
+
         _binding = FragmentCommunicationAreaBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val sharedPreferences = context?.getSharedPreferences("your_preference_name", Context.MODE_PRIVATE)
         val username = sharedPreferences?.getString("username", null)
+
+
 
         binding.fabScrollToTop.setOnClickListener{
             recyclerView.smoothScrollToPosition(0)
@@ -58,7 +62,7 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
     }
 
     private fun displaypost(currentUserUsername: String?) {
-        var newcursor: Cursor? = dbh?.gettext()
+        val newcursor: Cursor? = dbh.gettext()
         newArry = ArrayList<DatalistPost>()
         while (newcursor!!.moveToNext()) {
             val upostID = newcursor.getString(0)
@@ -68,7 +72,6 @@ class CommunicationAreaFragment : Fragment(R.layout.fragment_communication_area)
         }
         recyclerView.adapter = MyAdapterPost(newArry, currentUserUsername ?: "")
     }
-
 
 
     override fun onDestroyView() {

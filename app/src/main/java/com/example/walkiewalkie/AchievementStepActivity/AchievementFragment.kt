@@ -41,7 +41,7 @@ class AchievementFragment : Fragment() {
         view.findViewById<TextView>(R.id.tv_total_coins).text = "Total coins: $totalCoins"
 
         // Initialize SharedPreferences
-        sharedPreferences = requireContext().getSharedPreferences("com.example.walkiewalkie", Context.MODE_PRIVATE)
+             sharedPreferences = requireContext().getSharedPreferences("com.example.walkiewalkie", Context.MODE_PRIVATE)
         rewardedAdViewCount = sharedPreferences.getInt("rewarded_ad_view_count", 0)
 
 /*        // add value

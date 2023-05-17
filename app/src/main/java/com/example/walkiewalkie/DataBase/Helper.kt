@@ -98,6 +98,59 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
         return latestBMI
     }
 
+    fun getLatestHeightForUser(username: String): Float {
+        val db = readableDatabase
+
+        val cursor: Cursor? = db.query(
+            "Userdata",
+            arrayOf("height"),
+            "username = ?",
+            arrayOf(username),
+            null,
+            null,
+            "username DESC",
+            "1"
+        )
+        var lastestheight: Float = 0f
+
+        if (cursor != null && cursor.moveToFirst()) {
+            val heightIndex = cursor.getColumnIndex("height")
+            if (!cursor.isNull(heightIndex)) {
+                lastestheight = cursor.getFloat(heightIndex)
+            }
+            cursor.close()
+        }
+
+        db.close()
+        return lastestheight
+    }
+
+    fun getLatestWeightForUser(username: String): Float {
+        val db = readableDatabase
+
+        val cursor: Cursor? = db.query(
+            "Userdata",
+            arrayOf("weight"),
+            "username = ?",
+            arrayOf(username),
+            null,
+            null,
+            "username DESC",
+            "1"
+        )
+        var lastestweight: Float = 0f
+
+        if (cursor != null && cursor.moveToFirst()) {
+            val weightIndex = cursor.getColumnIndex("weight")
+            if (!cursor.isNull(weightIndex)) {
+                lastestweight = cursor.getFloat(weightIndex)
+            }
+            cursor.close()
+        }
+
+        db.close()
+        return lastestweight
+    }
     fun updateBMI(username: String,weight: String, height: String, newBMI: Float) {
         val db = writableDatabase
 

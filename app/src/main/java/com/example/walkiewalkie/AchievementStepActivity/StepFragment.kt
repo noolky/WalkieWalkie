@@ -15,11 +15,13 @@ abstract class StepFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(getLayoutId(), null, false)
+
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initData()
         initListener()
     }

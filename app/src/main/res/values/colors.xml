@@ -20,8 +20,7 @@
     <color name="light_blue">#44CDC5</color>
 
     <color name="Nimvelo">#314755</color>
-
-
+    
     <color name="Background">#111419</color>
     <color name="bar_background">#262C37</color>
     <color name="text_hint">#939CAD</color>
@@ -32,6 +31,14 @@
     <color name="Normal">#8BC34A</color>
     <color name="Over_Weight">#FF5722</color>
     <color name="Obese">#F60505</color>
+
     <color name="Transparent">#00FFFFF></color>
+
+    
+    //kengYip
+    
+    <color name="Caribbean_Green">#00CC99</color>
+    <color name="tomato_red">#D32027</color>
+    <color name="grey">#D3D3D3</color>
 
 </resources>

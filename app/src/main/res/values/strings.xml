@@ -29,4 +29,8 @@
     <string name="Back">Back</string>
     <string name="EditPostTitle">Edit Text</string>
     <string name="logout">logout</string>
+    <string name="Warning">Warning!!!</string>
+    <string name="DeleteRemainder">**The post will permently deleted**</string>
+    <string name="DeleteComfirm">Yes</string>
+    <string name="DeletedNotComfirmtext">no</string>
 </resources>
