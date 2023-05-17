@@ -58,8 +58,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/CVHeightnWeight"
-                android:layout_width="308dp"
-                android:layout_height="93dp"
+                android:layout_width="316dp"
+                android:layout_height="144dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 app:cardBackgroundColor="#FCF5EE"
@@ -67,7 +67,7 @@
                 app:cardElevation="20dp"
                 app:cardMaxElevation="20dp"
                 app:layout_constraintStart_toEndOf="@+id/BMIbutton"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -76,41 +76,58 @@
 
                     <TextView
                         android:id="@+id/HnWTittle"
-                        android:layout_width="284dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Height and Weight"
                         android:textAlignment="center"
                         android:textColor="@color/text_bodycondittion"
-                        android:textSize="16sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/CurrentHeight"
                         android:layout_width="244dp"
                         android:layout_height="wrap_content"
-
+                        android:layout_marginStart="5dp"
                         android:text=""
                         android:textColor="@color/text_bodycondittion"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/CurrentWeight"
                         android:layout_width="243dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
                         android:text=""
                         android:textColor="@color/text_bodycondittion"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/TvHChanges"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:textColor="@color/text_bodycondittion"
+                        android:textSize="@dimen/bdTextSize" />
+
+                    <TextView
+                        android:id="@+id/TvWChanges"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:textColor="@color/text_bodycondittion"
+                        android:textSize="@dimen/bdTextSize" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <ImageButton
                 android:id="@+id/BMIbutton"
-                android:layout_width="88dp"
-                android:layout_height="93dp"
+                android:layout_width="85dp"
+                android:layout_height="120dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/bar_background"
                 android:backgroundTint="#CEDDEF"
-                android:layout_marginTop="5dp"
                 android:scaleType="fitCenter"
                 android:soundEffectsEnabled="true"
                 android:textAlignment="center"
@@ -122,12 +139,13 @@
                 android:id="@+id/Information"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:text="Information"
                 android:textColor="@color/text_bodycondittion"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintHorizontal_bias="0.016"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/BMIbutton" />
 
@@ -369,9 +387,6 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

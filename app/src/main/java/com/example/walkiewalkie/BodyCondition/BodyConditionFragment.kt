@@ -21,6 +21,9 @@ class BodyConditionFragment : Fragment() {
 
     private lateinit var buttonCal: ImageButton
     private lateinit var BMIText:TextView
+    private lateinit var resultChangesH:TextView
+    private lateinit var resultChangesW:TextView
+
     //this can the DataBMI name when combine aden data
     private lateinit var dataBaseBMI: Helper
 
@@ -43,6 +46,8 @@ class BodyConditionFragment : Fragment() {
         }
 
         BMIText =view.findViewById(R.id.TvBmiResult)
+        resultChangesH=view.findViewById(R.id.TvHChanges)
+        resultChangesW=view.findViewById(R.id.TvWChanges)
 
         val LastestBMI=dataBaseBMI.getLatestBMIForUser(username.toString())
         val BMIResult2Digit =LastestBMI
@@ -53,6 +58,12 @@ class BodyConditionFragment : Fragment() {
         val LastestWeight=dataBaseBMI.getLatestWeightForUser(username.toString())
         val CurrentWeight =LastestWeight.toString()
 
+        val changesHeight=dataBaseBMI.getLatestHeightChangestForUser(username.toString())
+        val currentChangesHeight=changesHeight
+
+        val changesWeight=dataBaseBMI.getLatestWeightChangestForUser(username.toString())
+        val currentChangesWeight=changesWeight
+
 
         val resultSuggestion1 = view?.findViewById<TextView>(R.id.TvSg1Result)
         val resultSuggestion2 = view?.findViewById<TextView>(R.id.TvSg2Result)
@@ -62,16 +73,21 @@ class BodyConditionFragment : Fragment() {
         val Height=view?.findViewById<TextView>(R.id.CurrentHeight)
         val Weight=view?.findViewById<TextView>(R.id.CurrentWeight)
 
+
         var Sg1=""
         var Sg2=""
         var Sg3=""
         var color = 0
+        var colorChangesH = 0
+        var colorChangesW = 0
         var bodyIndex=""
         var textBDdec=""
         var textHeight=""
         var textWeight=""
         var food=""
         var exercise=""
+        var tvHeightChanges=""
+        var tvWeightChanges=""
 
         if(LastestBMI.toString().isEmpty()){
             // Handle the case where no latest BMI value is available
@@ -165,12 +181,43 @@ class BodyConditionFragment : Fragment() {
             }
 
             else{
-
                 textHeight="0"
                 textWeight="0"
             }
 
+
+            when{
+                currentChangesWeight>0f ->{
+                    tvWeightChanges="Compared with the last time Your body weight has increased by $currentChangesWeight KG"
+                    colorChangesW=R.color.Obese
+                }
+                currentChangesWeight<0f ->{
+                    tvWeightChanges="Compared with the last time Your body weight decreased by  ${kotlin.math.abs(currentChangesWeight)} KG"
+                    colorChangesW=R.color.Normal
+                }
+
+                currentChangesWeight==0f ->{
+                    tvWeightChanges="you didn't gain any weight"
+                }
+            }
+
+            when{
+                currentChangesHeight>0f->{
+                    tvHeightChanges="Compared with the last time, you have grown $currentChangesHeight CM taller "
+                    colorChangesH=R.color.Normal
+                }
+                currentChangesHeight<0f->{
+                    tvHeightChanges="You are ${kotlin.math.abs(currentChangesHeight)} CM shorter than last time  "
+                    colorChangesH=R.color.Obese
+                }
+                currentChangesHeight==0f->{
+                    tvHeightChanges="you didn't grow taller"
+                }
+            }
+
+
             BMIText.setTextColor(ContextCompat.getColor(requireContext(), color))
+
             resultSuggestion1?.text=Sg1
             resultSuggestion2?.text=Sg2
             resultSuggestion3?.text=Sg3
@@ -179,12 +226,17 @@ class BodyConditionFragment : Fragment() {
             foodDetails?.text=food
             exerciseDetails?.text=exercise
 
+            resultChangesH.setTextColor(ContextCompat.getColor(requireContext(), colorChangesH))
+            resultChangesH.text=tvHeightChanges
+
+            resultChangesW.setTextColor(ContextCompat.getColor(requireContext(), colorChangesW))
+            resultChangesW.text=tvWeightChanges
+
             BMIText.text=BMIResult2Digit.toString()+textBDdec+bodyIndex
-            Log.i("BMI Result ","$BMIResult2Digit")
-            Log.i("BMI Result ","${resultSuggestion1.toString()}")
+            Log.i("W Changes ","$currentChangesWeight")
+            Log.i("H Changes ","$currentChangesHeight")
 
         }
-
 
 
         return view
