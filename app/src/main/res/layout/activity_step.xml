@@ -17,8 +17,8 @@
         android:background="@color/teal_200"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="433dp"
+        android:layout_width="381dp"
+        android:layout_height="700dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical">
@@ -183,6 +183,18 @@
             android:layout_marginTop="15dp"
             android:text="This device is not supported."
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/stepReward"
+            android:layout_width="match_parent"
+            android:layout_height="157dp"
+            android:layout_below="@id/btn_rewarded_ad"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="70dp"
+            android:gravity="center"
+            android:text="\n\n10000 Steps (5 Coins)\n20000 Steps (10 Coins)\n50000 Steps (60 Coins)\n\nOnce u hit the goal, the coins will be credited automatically.\nEach voucher required 1000 coins."
+            android:textColor="@android:color/darker_gray" />
 
     </LinearLayout>
 
