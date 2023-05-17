@@ -44,6 +44,9 @@ class BMICalculatorFragment : Fragment() {
         var changesHeight=0f
         var changesWeight=0f
 
+        val LastestBMI=dbBMI.getLatestBMIForUser(username.toString())
+        val lastestBMI=LastestBMI
+
         val LastestHeight=dbBMI.getLatestHeightForUser(username.toString())
         val oldHeight =LastestHeight.toString()
 
@@ -77,7 +80,7 @@ class BMICalculatorFragment : Fragment() {
 
                     ChangeButton.setOnClickListener{
 
-                        if(validateBMI(saveBMIResult)){
+                        if(validateBMI(lastestBMI)){
                             if(weightValue!=oldWeight.toFloat()){
                                changesWeight=weightValue-oldWeight.toFloat()
 
