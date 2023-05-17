@@ -78,6 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:src="@drawable/big_big_communication_area_icon"
+        android:background="@drawable/transparent_button_home"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:src="@drawable/big_big_body_conditional_icon"
+        android:background="@drawable/transparent_button_home"
         app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
@@ -100,6 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:src="@drawable/big_big_achievement_icon"
+        android:background="@drawable/transparent_button_home"
         app:layout_constraintEnd_toStartOf="@+id/imageButton4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
@@ -111,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:src="@drawable/big_big_profile_icon"
+        android:background="@drawable/transparent_button_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageButton3"
@@ -123,9 +127,10 @@
         android:fontFamily="@font/akaya_telivigala"
         android:text="@string/RemainderDetails"
         android:textAlignment="viewStart"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/LinearLayoutHome1"
         app:layout_constraintStart_toStartOf="@+id/LinearLayoutHome1"
-        tools:layout_editor_absoluteY="382dp" />
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayoutHome1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
