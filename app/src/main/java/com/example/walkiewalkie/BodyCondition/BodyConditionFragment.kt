@@ -198,6 +198,7 @@ class BodyConditionFragment : Fragment() {
 
                 currentChangesWeight==0f ->{
                     tvWeightChanges="you didn't gain any weight"
+                    colorChangesW=R.color.black
                 }
             }
 
@@ -212,6 +213,7 @@ class BodyConditionFragment : Fragment() {
                 }
                 currentChangesHeight==0f->{
                     tvHeightChanges="you didn't grow taller"
+                    colorChangesH=R.color.black
                 }
             }
 

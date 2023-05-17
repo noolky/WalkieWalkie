@@ -37,4 +37,5 @@
     <string name="LetGo"><![CDATA[Let Go >>>]]></string>
     <string name="GoStepCounter">Check Your Step Counter</string>
     <string name="RemainderDetails">Click Us to know function of each fragment</string>
+    <string name="OKName">Alright</string>
 </resources>
