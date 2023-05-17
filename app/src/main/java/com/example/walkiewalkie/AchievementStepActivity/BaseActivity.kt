@@ -12,8 +12,10 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
-
+        setupActionBar()
     }
+
+
 
     override fun setContentView(@LayoutRes layoutResID: Int) {
         super.setContentView(layoutResID)
@@ -39,5 +41,17 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun initData()
     abstract fun initListener()
 
+    private fun setupActionBar() {
+        supportActionBar?.apply {
+            title = "Step Counter" // Set the title
+            setDisplayHomeAsUpEnabled(true) // Enable the back button
+        }
+    }
 
 }
+/*
+val activity = requireActivity() as AppCompatActivity
+activity.supportActionBar?.apply {
+    setTitle("Step Counting") // Set the title
+    setDisplayHomeAsUpEnabled(true) // Enable the back button
+}*/

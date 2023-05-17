@@ -14,9 +14,11 @@
         android:id="@+id/userNameOnPost"
         android:layout_width="67dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/akaya_telivigala"
         android:gravity="center"
         android:text="@string/UserName"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -43,13 +45,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.253">
 
         <TextView
             android:id="@+id/PostOnScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/text_box_container"
+            android:fontFamily="@font/akaya_telivigala"
+            android:minHeight="50dp"
             android:padding="5dp"
             android:text="@string/PostOnScreen" />
     </ScrollView>
@@ -65,6 +70,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+
         app:layout_constraintEnd_toEndOf="@+id/scrollableContainer"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/scrollableContainer"
@@ -73,10 +80,25 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/EditButtonPost"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/custom_button_post_green"
             android:contentDescription="@string/LikedButton"
             android:src="@drawable/modify_button"
+            android:layout_marginRight="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/scrollableContainer"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/scrollableContainer"
+            app:layout_constraintTop_toBottomOf="@+id/scrollableContainer" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/DeleteButtonPost"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/custom_button_post_red"
+            android:contentDescription="@string/DeleteButton"
+            android:src="@drawable/delete_icon"
             app:layout_constraintEnd_toEndOf="@+id/scrollableContainer"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/scrollableContainer"
