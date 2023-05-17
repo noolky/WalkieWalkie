@@ -57,7 +57,7 @@
         android:gravity="top"
         android:hint="@string/Hint_Post"
         android:inputType="textMultiLine"
-        android:maxLines="30"
+        android:maxLength="200"
         android:padding="10dp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -118,8 +118,10 @@
         android:text="@string/UserName"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.411" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

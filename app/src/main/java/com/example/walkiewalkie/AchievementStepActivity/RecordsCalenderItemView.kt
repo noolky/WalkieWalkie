@@ -12,7 +12,8 @@ import com.example.walkiewalkie.R
 
 
 class RecordsCalenderItemView(
-    mContext: Context,//date and time
+    mContext: Context,
+    //date and time
     private val weekStr: String,
     private val dateStr: String,
     val position: Int,
