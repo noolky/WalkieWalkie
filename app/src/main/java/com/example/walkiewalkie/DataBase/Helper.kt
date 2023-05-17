@@ -13,7 +13,7 @@ import android.util.Log
 class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) {
     private val appContext: Context = context.applicationContext
     override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL("create table Userdata (username TEXT primary key, phone TEXT, email TEXT, password TEXT, weight TEXT, height TEXT, bmi REAL)")
+        db?.execSQL("create table Userdata (username TEXT primary key, phone TEXT, email TEXT, password TEXT, weight TEXT, height TEXT,changesHeight TEXT, changesWeight TEXT,bmi REAL)")
         db?.execSQL("create table Postdetaildata (postID TEXT primary key,userName TEXT,postData TEXT)")
     }
 
@@ -57,19 +57,6 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
         return true
     }
 
-
-
-    fun saveBMI(weight: String, height: String, bmi: Float) {
-        val db = writableDatabase
-
-        val values = ContentValues()
-        values.put("weight", weight)
-        values.put("height", height)
-        values.put("bmi", bmi)
-
-        db.insert("Userdata", null, values)
-        db.close()
-    }
 
     fun getLatestBMIForUser(username: String): Float {
         val db = readableDatabase
@@ -151,13 +138,70 @@ class Helper(context : Context): SQLiteOpenHelper(context, "Userdata", null, 1) 
         db.close()
         return lastestweight
     }
-    fun updateBMI(username: String,weight: String, height: String, newBMI: Float) {
+
+    fun getLatestWeightChangestForUser(username: String): Float {
+        val db = readableDatabase
+
+        val cursor: Cursor? = db.query(
+            "Userdata",
+            arrayOf("changesWeight"),
+            "username = ?",
+            arrayOf(username),
+            null,
+            null,
+            "username DESC",
+            "1"
+        )
+        var LastestWeightchanges: Float = 0f
+
+        if (cursor != null && cursor.moveToFirst()) {
+            val changesWeightIndex= cursor.getColumnIndex("changesWeight")
+            if (!cursor.isNull(changesWeightIndex)) {
+                LastestWeightchanges = cursor.getFloat(changesWeightIndex)
+            }
+            cursor.close()
+        }
+
+        db.close()
+        return LastestWeightchanges
+    }
+
+    fun getLatestHeightChangestForUser(username: String): Float {
+        val db = readableDatabase
+
+        val cursor: Cursor? = db.query(
+            "Userdata",
+            arrayOf("changesHeight"),
+            "username = ?",
+            arrayOf(username),
+            null,
+            null,
+            "username DESC",
+            "1"
+        )
+        var LastestWeightchanges: Float = 0f
+
+        if (cursor != null && cursor.moveToFirst()) {
+            val changesHeightIndex= cursor.getColumnIndex("changesHeight")
+            if (!cursor.isNull(changesHeightIndex)) {
+                LastestWeightchanges = cursor.getFloat(changesHeightIndex)
+            }
+            cursor.close()
+        }
+
+        db.close()
+        return LastestWeightchanges
+    }
+    fun updateBMI(username: String,weight: String, height: String, newBMI: Float,changesHeight:Float,changeWeight:Float) {
         val db = writableDatabase
 
         val values = ContentValues()
         values.put("weight", weight)
         values.put("height", height)
         values.put("bmi", newBMI)
+        values.put("changesHeight",changesHeight)
+        values.put("changesWeight",changeWeight)
+
 
         val whereClause = "username = ?"
         val whereArgs = arrayOf(username)

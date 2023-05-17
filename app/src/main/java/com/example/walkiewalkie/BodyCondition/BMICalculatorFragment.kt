@@ -29,10 +29,8 @@ class BMICalculatorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
 
-
     ): View? {
         val view = inflater.inflate(R.layout.fragment_b_m_i_calculator, container, false)
-
 
         val sharedPreferences = context?.getSharedPreferences("your_preference_name", Context.MODE_PRIVATE)
         val username = sharedPreferences?.getString("username", null)
@@ -42,6 +40,15 @@ class BMICalculatorFragment : Fragment() {
         heightText = view.findViewById(R.id.etHeight)
         calButton = view.findViewById(R.id.btnCalculate)
         ChangeButton = view.findViewById(R.id.BtnSetBMI)
+
+        var changesHeight=0f
+        var changesWeight=0f
+
+        val LastestHeight=dbBMI.getLatestHeightForUser(username.toString())
+        val oldHeight =LastestHeight.toString()
+
+        val LastestWeight=dbBMI.getLatestWeightForUser(username.toString())
+        val oldWeight =LastestWeight.toString()
 
         calButton.setOnClickListener {
             val weight = weightText.text.toString()
@@ -69,8 +76,24 @@ class BMICalculatorFragment : Fragment() {
                     saveBMIResult = bmi2Digit
 
                     ChangeButton.setOnClickListener{
-                        dbBMI.updateBMI(username.toString(), weight,height,saveBMIResult)
-                        Toast.makeText(requireContext(), "BMI successfully set up ", Toast.LENGTH_LONG).show()
+
+                        if(validateBMI(saveBMIResult)){
+                            if(weightValue!=oldWeight.toFloat()){
+                               changesWeight=weightValue-oldWeight.toFloat()
+
+                                dbBMI.updateBMI(username.toString(), weight,height,saveBMIResult,changesHeight,changesWeight)
+                            }
+
+                            if(heightValue!=oldHeight.toFloat()){
+                                changesHeight=heightValue-oldHeight.toFloat()
+
+                                dbBMI.updateBMI(username.toString(), weight,height,saveBMIResult,changesHeight,changesWeight)
+                            }
+                        }
+                        else{
+                            dbBMI.updateBMI(username.toString(), weight,height,saveBMIResult,0f,0f)
+                            Toast.makeText(requireContext(), "BMI successfully set up ", Toast.LENGTH_LONG).show()
+                        }
 
                     }
 
@@ -99,10 +122,10 @@ class BMICalculatorFragment : Fragment() {
         }
     }
 
-    private fun validateBMI(BMI: String? ): Boolean {
+    private fun validateBMI(BMI: Float? ): Boolean {
         return when {
-            BMI.isNullOrEmpty() -> {
-                Toast.makeText(requireContext(), "BMI is empty", Toast.LENGTH_LONG).show()
+            BMI==0f -> {
+
                 false
             }
 
@@ -110,6 +133,8 @@ class BMICalculatorFragment : Fragment() {
             else -> true
         }
     }
+
+
 
 
     // display the description for the result and changing the color
@@ -151,6 +176,8 @@ class BMICalculatorFragment : Fragment() {
     }
 
 
+
+
     private fun closeKeyboard(view: View) {
         val close =
             requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -158,3 +185,5 @@ class BMICalculatorFragment : Fragment() {
     }
 
 }
+
+
