@@ -1,14 +1,17 @@
 package com.example.walkiewalkie.loginRegister
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.media.Image
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -78,8 +81,6 @@ class ProfileFragment : Fragment() {
                 Toast.makeText(requireContext(), "Profile Updated Successfully", Toast.LENGTH_SHORT).show()
             }
         }
-        // Initially set the fields as non-editable
-        updateFieldEditableState()
 
         val logOutButton: ImageButton = view.findViewById(R.id.imageButton6)
 
@@ -87,14 +88,12 @@ class ProfileFragment : Fragment() {
             // Close the keyboard before performing the logout actions
             closeKeyboard(view)
 
-            // Perform logout actions here (e.g., clear session, delete user data, etc.)
-            // Start LoginActivity to go back to the login screen
-            val intent = Intent(requireContext(), StartActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish() // Optional: Close the current activity to prevent going back to it using the back button
-
+            // Show confirmation dialog
+            showLogoutConfirmationDialog()
         }
 
+        // Initially set the fields as non-editable
+        updateFieldEditableState()
     }
 
     private fun updateFieldEditableState() {
@@ -102,6 +101,15 @@ class ProfileFragment : Fragment() {
         binding.change1.isEnabled = isEditable
         binding.change2.isEnabled = isEditable
         binding.change3.isEnabled = isEditable
+
+        // Show or hide the password field based on the isEditable flag
+        val passwordEditText = binding.change3
+        if (isEditable) {
+            passwordEditText.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        } else {
+            passwordEditText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+
     }
 
     private fun closeKeyboard(view: View) {
@@ -112,6 +120,21 @@ class ProfileFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showLogoutConfirmationDialog(){
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Logout")
+        builder.setMessage("Are you sure you want to LOG OUT?")
+        builder.setPositiveButton("Yes"){ _, _ ->
+            // Perform logout actions here (e.g., clear session, delete user data, etc.)
+            // Start LoginActivity to go back to the login screen
+            val intent = Intent(requireContext(), StartActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish() // Optional: Close the current activity to prevent going back to it using the back button
+        }
+        builder.setNegativeButton("No", null)
+        builder.create().show()
     }
 
 
