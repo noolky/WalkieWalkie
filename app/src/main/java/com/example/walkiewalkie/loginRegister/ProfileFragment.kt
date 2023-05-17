@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -83,11 +84,15 @@ class ProfileFragment : Fragment() {
         val logOutButton: ImageButton = view.findViewById(R.id.imageButton6)
 
         logOutButton.setOnClickListener(){
+            // Close the keyboard before performing the logout actions
+            closeKeyboard(view)
+
             // Perform logout actions here (e.g., clear session, delete user data, etc.)
             // Start LoginActivity to go back to the login screen
-            val intent = Intent(requireContext(), LoginActivity::class.java)
+            val intent = Intent(requireContext(), StartActivity::class.java)
             startActivity(intent)
             requireActivity().finish() // Optional: Close the current activity to prevent going back to it using the back button
+
         }
 
     }
@@ -99,8 +104,15 @@ class ProfileFragment : Fragment() {
         binding.change3.isEnabled = isEditable
     }
 
+    private fun closeKeyboard(view: View) {
+        val close = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        close.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

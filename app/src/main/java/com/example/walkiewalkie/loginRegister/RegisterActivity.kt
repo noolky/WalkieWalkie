@@ -1,10 +1,12 @@
 package com.example.walkiewalkie.loginRegister
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.text.TextUtils
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -39,6 +41,9 @@ class RegisterActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString()
             val confirmPassword = confirmPasswordEditText.text.toString()
 
+            // Close the keyboard before performing the registration actions
+            closeKeyboard()
+
             if (TextUtils.isEmpty(username) || TextUtils.isEmpty(phone) ||
                 TextUtils.isEmpty(email) || TextUtils.isEmpty(password) ||
                 TextUtils.isEmpty(confirmPassword)) {
@@ -71,5 +76,10 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun isValidPhoneNumber ( phoneNumber: String): Boolean{
         return phoneNumber.matches(Regex("\\d{10}"))
+    }
+
+    private fun closeKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
 }
