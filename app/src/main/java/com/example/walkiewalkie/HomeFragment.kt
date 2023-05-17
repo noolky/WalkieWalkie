@@ -14,8 +14,7 @@ import android.widget.TextView
 
 class HomeFragment : Fragment() {
 
-    lateinit var Name: TextView
-    private lateinit var buttonToStepCount: Button
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -31,11 +30,11 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireActivity(), com.example.walkiewalkie.AchievementStepActivity.MainActivity::class.java)
             startActivity(intent)
         }
-        Name = view.findViewById(R.id.textView) // Replace `textViewName` with the actual ID of your TextView
+
 
         val sharedPreferences = context?.getSharedPreferences("your_preference_name", Context.MODE_PRIVATE)
         val username = sharedPreferences?.getString("username", null)
-        Name.text = username
+
         return view
 
 

@@ -33,4 +33,8 @@
     <string name="DeleteRemainder">**The post will permently deleted**</string>
     <string name="DeleteComfirm">Yes</string>
     <string name="DeletedNotComfirmtext">no</string>
+    <string name="HomeTitleValue">WalkieWalkie</string>
+    <string name="LetGo"><![CDATA[Let Go >>>]]></string>
+    <string name="GoStepCounter">Check Your Step Counter</string>
+    <string name="RemainderDetails">Click Us to know function of each fragment</string>
 </resources>
